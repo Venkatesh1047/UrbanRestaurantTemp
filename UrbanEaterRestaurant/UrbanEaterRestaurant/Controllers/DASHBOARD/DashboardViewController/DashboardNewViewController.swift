@@ -129,7 +129,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // create a new cell if needed or reuse an old one MenuList
+        // create a new cell if needed or reuse an old one MenuList sdfada  w   e
         let cell:MenuTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MenuList", for: indexPath) as! MenuTableViewCell
         
         cell.titleLabel.text = self.menuList[indexPath.row]
@@ -138,7 +138,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // ["Order History","Earning Summary","Table Booking History","Manage Menu","Settings","Help & Support","Logout"]
+        // ["Order History","Earning Summary","Table Booking History","Manage Menu","Settings","Help & Support","Logout"] dsasdasd werrwr324314
         let item : String = menuList[indexPath.row]
         switch item {
         case "Order History":

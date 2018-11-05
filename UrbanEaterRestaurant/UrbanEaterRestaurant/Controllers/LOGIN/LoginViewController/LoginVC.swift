@@ -45,13 +45,13 @@ class LoginVC: UIViewController
         self.emailID.text = "srikanth_deccan@hexadots.in" // local
         self.password.text = "Deccan@123"
 
-//        self.emailID.text = "casp.ios.test@gmail.com" // local
+//        self.emailID.text = "casp.ios.test@gmail.com" // local sdd dfsdfdsf
 //        self.password.text = "Pass@123"
         
-//        self.emailID.text = "subres@yopmail.com" // dinedoo
+//        self.emailID.text = "subres@yopmail.com" // dinedoo dfsdfsd
 //        self.password.text = "Res@123" // "Pass@123"
         
-//        self.emailID.text = "barath@casperon.in"
+//        self.emailID.text = "barath@casperon.in" sdfddf
 //        self.password.text = "Barath93"
     }
 
