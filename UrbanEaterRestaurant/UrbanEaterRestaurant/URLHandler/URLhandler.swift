@@ -42,7 +42,7 @@ class URLhandler: NSObject {
     class func postUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
         // Theme.sharedInstance.activityView(View: (URLhandler.sharedInstance.topMostVC()?.view)!)
         Alamofire.request(urlString,method: .post, parameters: params, headers: header).responseJSON { (response) in
-            //  Theme.sharedInstance.removeActivityView(View: (URLhandler.sharedInstance.topMostVC()?.view)!)
+            
             switch(response.result) {
             case .success(_):
                 if response.result.value != nil{

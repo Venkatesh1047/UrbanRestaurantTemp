@@ -90,7 +90,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         }else{
             titleText = titleText + " Online?"
         }
-        let alertView = JSSAlertView().showAlert(self,title: titleText ,text:nil,buttonText: "CANCEL" ,cancelButtonText:"CONFIRM",color:#colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1))
+        let alertView = JSSAlertView().showAlert(self,title: titleText ,text:nil,buttonText: "CANCEL" ,cancelButtonText:"CONFIRM",color:#colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1))
         
         alertView.addAction{
             print("cancel --->>>")
@@ -200,7 +200,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func logoutAction(){
-        let alertView = JSSAlertView().showAlert(self,title: "Are you sure you want to Logout?" ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM",color: #colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1))
+        let alertView = JSSAlertView().showAlert(self,title: "Are you sure you want to Logout?" ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM",color: #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1))
         
         alertView.addAction{
             print("no logout --->>>")
@@ -276,7 +276,7 @@ extension DashboardNewViewController :UICollectionViewDelegate,UICollectionViewD
             cell.backgroundColor = #colorLiteral(red: 0.8723144531, green: 0.8723144531, blue: 0.8723144531, alpha: 1)
         }else{
            cell.headerLbl.text = dataList[indexPath.row]
-            cell.headerLbl.textColor = #colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1)
+            cell.headerLbl.textColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
             cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
         

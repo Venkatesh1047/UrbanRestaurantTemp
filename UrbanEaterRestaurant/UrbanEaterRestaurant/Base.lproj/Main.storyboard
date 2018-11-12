@@ -822,7 +822,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="WQ7-8D-lGb" firstAttribute="centerY" secondItem="sQQ-m4-zh2" secondAttribute="centerY" id="3cr-sp-m0c"/>
                                     <constraint firstItem="PYM-Sv-dRq" firstAttribute="centerX" secondItem="sQQ-m4-zh2" secondAttribute="centerX" id="aky-Qe-nG1"/>
@@ -918,7 +918,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="dQl-yJ-EMr" firstAttribute="centerY" secondItem="UKf-aY-CY2" secondAttribute="centerY" id="GS3-KY-PDb"/>
                                             <constraint firstItem="7V3-Gi-Ywz" firstAttribute="centerY" secondItem="UKf-aY-CY2" secondAttribute="centerY" constant="-12" id="HG4-Te-Aia"/>
@@ -1020,7 +1020,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="CK2-uS-A18" firstAttribute="centerY" secondItem="W7k-J5-gep" secondAttribute="centerY" id="Cnc-ht-wdl"/>
                                     <constraint firstItem="CK2-uS-A18" firstAttribute="centerX" secondItem="W7k-J5-gep" secondAttribute="centerX" id="GF8-e7-mjA"/>
@@ -1044,7 +1044,7 @@
                                     <segment title="Confirmed"/>
                                     <segment title="Rejected"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segumentControllerClicked:" destination="2Cb-xM-ClY" eventType="valueChanged" id="MYt-WG-DVW"/>
                                 </connections>
@@ -1167,7 +1167,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="T55-nH-ytq" firstAttribute="centerY" secondItem="bwC-C8-G35" secondAttribute="centerY" id="Cyo-G5-2Bl"/>
                                     <constraint firstAttribute="trailing" secondItem="jqb-Qu-YFN" secondAttribute="trailing" constant="15" id="HYg-Js-LA5"/>
@@ -1188,7 +1188,7 @@
                                     <segment title="Ongoing"/>
                                     <segment title="Completed"/>
                                 </segments>
-                                <color key="tintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="segumentControllerClicked:" destination="gNe-4i-mXd" eventType="valueChanged" id="BFA-L5-zie"/>
                                     <action selector="segumentControllerClicked:" destination="2Cb-xM-ClY" eventType="valueChanged" id="ybS-ZR-8Fp"/>
@@ -1254,7 +1254,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5rd-jX-MJR"/>
                                     <constraint firstItem="pm4-Cw-TOm" firstAttribute="centerY" secondItem="lGt-SY-r9V" secondAttribute="centerY" id="7w5-SI-yv1"/>
@@ -1329,7 +1329,7 @@
                                         <state key="normal" image="ShareButton"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="SV3-qA-tCJ" firstAttribute="centerY" secondItem="Onl-Ia-LiB" secondAttribute="centerY" id="Eeq-ml-atz"/>
                                     <constraint firstItem="Z2l-cz-TDy" firstAttribute="centerY" secondItem="Onl-Ia-LiB" secondAttribute="centerY" id="Hp3-CE-yEG"/>
@@ -1528,7 +1528,7 @@
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dh-ai-vzV">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="km4-mF-HDE"/>
                                         </constraints>
@@ -1547,7 +1547,7 @@
                                                 </connections>
                                             </barButtonItem>
                                         </items>
-                                        <color key="barTintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </toolbar>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="H6c-JR-oiS">
                                         <rect key="frame" x="0.0" y="44" width="375" height="156"/>
@@ -1637,7 +1637,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="cDf-wv-RRc" firstAttribute="centerX" secondItem="RqR-op-xqh" secondAttribute="centerX" id="4Xc-0d-Yko"/>
                                     <constraint firstAttribute="height" constant="44" id="9uO-En-1Ud"/>
@@ -1708,7 +1708,7 @@
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJb-kN-aJJ">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="bfi-q9-nup"/>
                                         </constraints>
@@ -1727,7 +1727,7 @@
                                                 </connections>
                                             </barButtonItem>
                                         </items>
-                                        <color key="barTintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </toolbar>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="de7-W8-z7K">
                                         <rect key="frame" x="0.0" y="44" width="375" height="156"/>
@@ -1814,7 +1814,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="ilJ-xP-zRo" firstAttribute="centerY" secondItem="pzH-PS-xaE" secondAttribute="centerY" id="3xc-bj-Dvb"/>
                                     <constraint firstItem="iCu-I4-c2J" firstAttribute="leading" secondItem="pzH-PS-xaE" secondAttribute="leading" constant="15" id="RMu-xt-Sat"/>
@@ -1938,7 +1938,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="6ar-XY-LGW" secondAttribute="trailing" constant="15" id="1Dp-Ok-IpS"/>
                                     <constraint firstItem="HHe-LQ-L3D" firstAttribute="centerY" secondItem="adx-y4-EzG" secondAttribute="centerY" id="GsJ-Ze-CHs"/>
@@ -2015,7 +2015,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="On0-Po-vv6" firstAttribute="centerY" secondItem="0di-Vv-jLv" secondAttribute="centerY" id="6PN-xG-EYg"/>
                                     <constraint firstItem="N6i-Ao-2bd" firstAttribute="centerY" secondItem="0di-Vv-jLv" secondAttribute="centerY" id="HZC-lY-dxM"/>
@@ -2101,7 +2101,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="BOt-Wi-S4M" firstAttribute="centerY" secondItem="P2A-ht-WZ4" secondAttribute="centerY" id="2Yu-c7-z19"/>
                                     <constraint firstAttribute="trailing" secondItem="BOt-Wi-S4M" secondAttribute="trailing" constant="15" id="49m-3U-w3s"/>
@@ -2176,7 +2176,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="QzL-pp-mVX" firstAttribute="leading" secondItem="SDa-lC-CTk" secondAttribute="leading" constant="15" id="Nvn-oa-ZKJ"/>
                                     <constraint firstItem="Rhf-y5-gj4" firstAttribute="centerY" secondItem="SDa-lC-CTk" secondAttribute="centerY" id="TOw-zJ-cYa"/>
@@ -2268,7 +2268,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="5NG-H9-OR3" firstAttribute="centerY" secondItem="NGp-MZ-yeG" secondAttribute="centerY" id="MGL-5s-6qb"/>
                                     <constraint firstItem="BPY-KL-Dy3" firstAttribute="centerX" secondItem="NGp-MZ-yeG" secondAttribute="centerX" constant="14" id="UJh-Sd-bdt"/>
@@ -2367,7 +2367,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ifz-Ag-yUh" firstAttribute="centerX" secondItem="0LP-UD-2hq" secondAttribute="centerX" id="2pX-sV-Tzz"/>
                                     <constraint firstItem="2j3-IP-RF0" firstAttribute="leading" secondItem="0LP-UD-2hq" secondAttribute="leading" constant="10" id="AYl-1z-Pa3"/>
@@ -2474,7 +2474,7 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ek-jD-UoT">
                                                 <rect key="frame" x="117.66666666666669" y="287" width="140" height="45"/>
-                                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="Kh7-Kk-rtx"/>
                                                     <constraint firstAttribute="width" constant="140" id="wWa-Hg-yc7"/>
@@ -2576,7 +2576,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="qnd-8c-xYG" firstAttribute="centerX" secondItem="Dkm-pq-8tx" secondAttribute="centerX" id="dOE-eZ-UVd"/>
                                     <constraint firstAttribute="height" constant="44" id="iWH-ik-jL4"/>
@@ -2918,7 +2918,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1A-Iz-Bew">
                                 <rect key="frame" x="112.66666666666669" y="468" width="150" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="K0q-RQ-oc5"/>
                                     <constraint firstAttribute="height" constant="40" id="NfJ-Mp-YKJ"/>
@@ -2940,7 +2940,7 @@
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0EV-zz-BDU">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="CUj-io-3lU"/>
                                         </constraints>
@@ -2959,7 +2959,7 @@
                                                 </connections>
                                             </barButtonItem>
                                         </items>
-                                        <color key="barTintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </toolbar>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2z0-gj-ixS">
                                         <rect key="frame" x="0.0" y="44" width="375" height="156"/>
@@ -2985,7 +2985,7 @@
                                 <subviews>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fGL-iS-m2g">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                        <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="QLy-aV-amS"/>
                                         </constraints>
@@ -3004,7 +3004,7 @@
                                                 </connections>
                                             </barButtonItem>
                                         </items>
-                                        <color key="barTintColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="barTintColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </toolbar>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGl-E2-iYk">
                                         <rect key="frame" x="0.0" y="44" width="375" height="156"/>
@@ -3109,7 +3109,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Jih-gL-JT7" firstAttribute="centerY" secondItem="b8S-xg-wpL" secondAttribute="centerY" id="8eQ-Qd-TwD"/>
                                     <constraint firstItem="lxG-Gp-QF3" firstAttribute="centerY" secondItem="b8S-xg-wpL" secondAttribute="centerY" id="B39-7v-QTS"/>
@@ -3485,7 +3485,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLO-xb-R0p">
                                 <rect key="frame" x="8" y="718" width="359" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HH0-zE-KDI"/>
                                 </constraints>

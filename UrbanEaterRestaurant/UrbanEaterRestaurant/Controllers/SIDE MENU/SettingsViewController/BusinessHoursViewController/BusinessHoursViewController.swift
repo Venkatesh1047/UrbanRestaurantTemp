@@ -78,7 +78,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         
         datePicker.datePickerMode = UIDatePickerMode.time
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "hh:mm a"
         
         minutesPicker.dataSource = self
         minutesPicker.delegate = self
@@ -100,7 +100,8 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         dateContainerView.isHidden = true
         blurView.isHidden = true
         let date = Date()
-        if (dateSelectedString ).isEmpty {
+       // print("dateSelectedString ---->>> \(dateSelectedString)")
+        if dateSelectedString.count == 0 {
             dateSelectedString =  dateFormatter.string(from: date)
         }
         
@@ -119,6 +120,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
             weekEndToLbl.text = dateSelectedString
             weekEndToLbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
+        dateSelectedString = ""
     }
     
     @IBAction func datePickCancelClicked(_ sender: Any) {

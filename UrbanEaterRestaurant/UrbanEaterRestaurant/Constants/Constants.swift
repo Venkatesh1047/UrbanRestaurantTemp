@@ -31,7 +31,7 @@ class Constants
 // MARK : - Toast Messages
 public struct ToastMessages {
     static let mobile_number_empty = "Mobile number can't be empty"
-    
+    static let password_empty = "Password can't be empty"
     
     
     static let  Unable_To_Sign_UP                         = "Unable to register now, Please try again...😞"

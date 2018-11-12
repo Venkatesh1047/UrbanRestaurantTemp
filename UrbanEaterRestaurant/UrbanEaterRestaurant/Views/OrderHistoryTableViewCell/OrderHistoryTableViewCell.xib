@@ -70,7 +70,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGv-i4-mtw">
                                 <rect key="frame" x="216" y="48.5" width="80" height="18"/>
-                                <color key="backgroundColor" red="0.28235294117647058" green="0.70588235294117652" blue="0.25490196078431371" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="iNN-SB-vcL"/>
                                     <constraint firstAttribute="width" constant="80" id="wfu-AN-EoQ"/>

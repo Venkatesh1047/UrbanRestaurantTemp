@@ -39,18 +39,6 @@ class LoginVC: UIViewController
         phoneNumTxt.placeholderColor("Mobile", color: .placeholderColor)
         passwordTxt.placeholderColor("Password", color: .placeholderColor)
     }
-
-    @objc func goNext(timer:Timer)
-    {
-        print("go next")
-        Themes.sharedInstance.removeActivityView(View: self.view)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller  = storyboard.instantiateViewController(withIdentifier: "NavigationViewControllerID") as! CommonNavigationController
-        controller.index = 0
-        (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = controller
-        (UIApplication.shared.delegate as! AppDelegate).window?.makeKeyAndVisible()
-        
-    }
     
     
     @IBAction func ActionLogin(_ sender: Any)
@@ -66,7 +54,7 @@ class LoginVC: UIViewController
         }
         else if Utilities().trimString(string: self.passwordTxt.text!) == ""
         {
-            Themes.sharedInstance.shownotificationBanner(Msg: "Password can't be empty")
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.password_empty)
             // Themes.sharedInstance.showToastView(ToastMessages.mobile_number_empty)
         }
             
@@ -81,8 +69,8 @@ class LoginVC: UIViewController
         self.view.endEditing(true)
         Themes.sharedInstance.activityView(View: self.view)
         
-        let email = self.phoneNumTxt.text!
-        let password = self.passwordTxt.text!
+        let email = "9876543210"//self.phoneNumTxt.text!
+        let password = "testing123"//self.passwordTxt.text!
         
         let param = [
             "mobileId": email,
@@ -126,22 +114,11 @@ class LoginVC: UIViewController
         let moveToOTPForgetPasswordVC = self.storyboard?.instantiateViewController(withIdentifier: "ForgotPasswordViewControllerID")as? ForgotPasswordViewController
         self.present(moveToOTPForgetPasswordVC!, animated: true, completion: nil)
 
-        
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

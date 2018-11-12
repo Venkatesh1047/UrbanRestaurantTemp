@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectGroup" customModule="DinedooRestaurant" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectGroup" customModule="UrbanEaterRestaurant" customModuleProvider="target">
             <connections>
                 <outlet property="nextBtn" destination="OJx-vh-Fba" id="a9b-M8-0dm"/>
                 <outlet property="selectClubLbl" destination="uNh-ZX-skF" id="8Cz-0J-WNh"/>
@@ -39,7 +39,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJx-vh-Fba">
                     <rect key="frame" x="77" y="352" width="120" height="40"/>
-                    <color key="backgroundColor" red="0.0" green="0.69411764710000001" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.95294117649999999" green="0.75294117650000003" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="cFP-4S-nLH"/>
                         <constraint firstAttribute="height" constant="40" id="dS3-R7-icp"/>

@@ -55,7 +55,7 @@ class Themes: NSObject {
         spinnerView.lineWidth = 3.0;
         spinnerView.tintColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
         //spinnerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2040881849)
-        View.addSubview(spinnerView)
+        topMostVC()?.view.addSubview(spinnerView)
         spinnerView.startAnimating()
     }
     

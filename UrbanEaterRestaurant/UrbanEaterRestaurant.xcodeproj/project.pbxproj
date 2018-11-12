@@ -1004,7 +1004,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexdots.UrbanEaterRestaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Nagaraju/#Projects/URBAN EATER Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/ThirdParty/MJPOPUP/UrbanEaterRestaurant-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Nagaraju/#Projects/UrbanEater_Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/ThirdParty/MJPOPUP/UrbanEaterRestaurant-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1024,7 +1024,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hexdots.UrbanEaterRestaurant;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Nagaraju/#Projects/URBAN EATER Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/ThirdParty/MJPOPUP/UrbanEaterRestaurant-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Nagaraju/#Projects/UrbanEater_Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/ThirdParty/MJPOPUP/UrbanEaterRestaurant-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
