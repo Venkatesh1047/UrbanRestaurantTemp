@@ -14,45 +14,30 @@ import SwiftyJSON
 class LoginVC: UIViewController
 {
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var emailID: UITextField!
-    
-    @IBOutlet weak var password: UITextField!
-    
-    @IBOutlet weak var buttonLogin: UIButton!
-    
-    @IBOutlet weak var Forgot_button: UIButton!
+    @IBOutlet weak var phoneNumTxt: UITextField!
+    @IBOutlet weak var passwordTxt: UITextField!
+
     var mainTheme:Themes = Themes()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        emailID.autocorrectionType = .no
-        password.autocorrectionType = .no
-        if emailID.isSelected == true{}
+        phoneNumTxt.autocorrectionType = .no
+        passwordTxt.autocorrectionType = .no
 
-        buttonLogin.layer.cornerRadius = 5
-        buttonLogin.clipsToBounds = true
-        
-        var deviceToken = ""
-        
-        if UserDefaults.standard.string(forKey: "deviceToken") != nil
-        {
-            deviceToken = UserDefaults.standard.string(forKey: "deviceToken")!
-        }
-        
-        print(" self.commonUtlity.appDelegate.deviceToken : ",  deviceToken)
-        
-        self.emailID.text = "srikanth_deccan@hexadots.in" // local
-        self.password.text = "Deccan@123"
-
-//        self.emailID.text = "casp.ios.test@gmail.com" // local sdd dfsdfdsf
-//        self.password.text = "Pass@123"
-        
-//        self.emailID.text = "subres@yopmail.com" // dinedoo dfsdfsd
-//        self.password.text = "Res@123" // "Pass@123"
-        
-//        self.emailID.text = "barath@casperon.in" sdfddf
-//        self.password.text = "Barath93"
+        updateUI()
+//        var deviceToken = ""
+//
+//        if UserDefaults.standard.string(forKey: "deviceToken") != nil
+//        {
+//            deviceToken = UserDefaults.standard.string(forKey: "deviceToken")!
+//        }
+ 
+    }
+    
+    func updateUI(){
+        phoneNumTxt.placeholderColor("Mobile", color: .placeholderColor)
+        passwordTxt.placeholderColor("Password", color: .placeholderColor)
     }
 
     @objc func goNext(timer:Timer)
@@ -72,23 +57,17 @@ class LoginVC: UIViewController
     {
         print("ActionLogin")
         
-        let passwordString = Utilities() .trimString(string: self.password.text!)
+      //  let passwordString = Utilities() .trimString(string: self.passwordTxt.text!)
         
-        if Utilities().trimString(string: self.emailID.text!)  == ""
+        if Utilities().trimString(string: self.phoneNumTxt.text!)  == ""
         {
-            Themes.sharedInstance.shownotificationBanner(Msg: "Email can't be empty")
-            //         self.view.makeToast("Email can't be empty", duration: 3.0, position: .center)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.mobile_number_empty)
+          //  Themes.sharedInstance.showToastView(ToastMessages.mobile_number_empty)
         }
-        else if !Utilities().isValidEmail(testStr: emailID.text!)
-        {
-            //         self.view.makeToast("Enter a Valid Email id", duration: 3.0, position: .center)
-            Themes.sharedInstance.shownotificationBanner(Msg: "Enter a Valid Email id")
-            // Themes.sharedInstance.showErrorpopup(Msg: "Enter a Valid Email id".MSlocalized)
-        }
-        else if Utilities().trimString(string: self.password.text!) == ""
+        else if Utilities().trimString(string: self.passwordTxt.text!) == ""
         {
             Themes.sharedInstance.shownotificationBanner(Msg: "Password can't be empty")
-            //  self.view.makeToast("Password can't be empty", duration: 3.0, position: .center)
+            // Themes.sharedInstance.showToastView(ToastMessages.mobile_number_empty)
         }
             
         else
@@ -97,83 +76,40 @@ class LoginVC: UIViewController
         }
     }
     
- 
     func LoginWebHit()
     {
         self.view.endEditing(true)
         Themes.sharedInstance.activityView(View: self.view)
         
-        let email = self.emailID.text!
-        let password = self.password.text!
+        let email = self.phoneNumTxt.text!
+        let password = self.passwordTxt.text!
         
-        var deviceToken = ""
-        
-        if UserDefaults.standard.string(forKey: "deviceToken") != nil
-        {
-            deviceToken = UserDefaults.standard.string(forKey: "deviceToken")!
-        }
-        
-        let param = ["email": email,
-                     "password": password,
-                     "deviceToken":  deviceToken,
-                     "gcm_id":""]
+        let param = [
+            "mobileId": email,
+            "password": password,
+            "through": "WEB"
+        ]
         
         print("loginURL ----->>> ", Constants.urls.loginURL)
         
         print("param login ----->>> ", param)
         
-        URLhandler.sharedinstance.makeCall(url: Constants.urls.loginURL, param: param as NSDictionary) { (response, error) -> ()! in
-            
-            if(error == nil)
-            {
-                
-              //  Themes.sharedInstance.removeActivityView(View: self.view)
-                
-                print("this is login response object values: \(String(describing: response))")
-                
-                if response != nil
-                {
-                    let status = Utilities().ReplaceNullWithString(string: response?.value(forKey: "status") as AnyObject)
-                    
-                    if status == "1"
-                    {
-                        let message = Utilities().ReplaceNullWithString(string: response?.value(forKey: "message") as AnyObject)
-                        
-                        let resp = JSON(response!)
-                        GlobalClass.restModel = RestaurantModel(resp)
-                        
-                        UserDefaults.standard.setValue(response, forKey: "restaurantInfo")
-                        if UserDefaults.standard.value(forKey: "restaurantInfo") != nil
-                        {
-                            let restaurantInfo: NSDictionary = UserDefaults.standard.value(forKey: "restaurantInfo") as! NSDictionary
-                            print("saving restaurantInfo at login : ", restaurantInfo)
-                            
-                        }
-
-                        Themes.sharedInstance.shownotificationBanner(Msg: message)
-   
-                        _ = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.goNext(timer:)), userInfo: nil, repeats: false)
-                    }
-                    else
-                    {
-                        let errors = Utilities().ReplaceNullWithString(string: response?.value(forKey: "errors") as AnyObject)
-                        Themes.sharedInstance.shownotificationBanner(Msg: errors)
-                        //  self.view.makeToast(errors, duration: 3.0, position: .bottom)
-                    }
-                }
+        URLhandler.postUrlSession(urlString: Constants.urls.loginURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response login ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                //print("Response login ----->>> ", dataResponse.json)
+                UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: "restaurantInfo")
+                GlobalClass.restModel = RestaurantModel(dataResponse.json)
+                self.movoToHome()
             }
-            else
-            {
-                Themes.sharedInstance.removeActivityView(View: self.view)
-                
-                print("error is happened", error?.localizedDescription as Any)
-
-                Themes.sharedInstance.shownotificationBanner(Msg: (error?.localizedDescription)!)
-            }
-            return ()
         }
+
     }
     
+    @objc func movoToHome() {
+        (UIApplication.shared.delegate as! AppDelegate).SetInitialViewController()
+    }
     
     public func isStrongPassword(password : String) -> Bool
     {

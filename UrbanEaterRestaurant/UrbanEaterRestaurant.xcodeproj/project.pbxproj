@@ -74,6 +74,8 @@
 		A3BEF60F218D84CD00192E7E /* TableCurrentBookingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF60E218D84CD00192E7E /* TableCurrentBookingCell.xib */; };
 		A3BEF611218D84F000192E7E /* NewOrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF610218D84F000192E7E /* NewOrderTableViewCell.xib */; };
 		A3BEF613218D8BDD00192E7E /* URLhandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF612218D8BDD00192E7E /* URLhandler.swift */; };
+		A3BEF6D72194378900192E7E /* NewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF6D62194378900192E7E /* NewAssets.xcassets */; };
+		A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,8 @@
 		A3BEF60E218D84CD00192E7E /* TableCurrentBookingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableCurrentBookingCell.xib; sourceTree = "<group>"; };
 		A3BEF610218D84F000192E7E /* NewOrderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderTableViewCell.xib; sourceTree = "<group>"; };
 		A3BEF612218D8BDD00192E7E /* URLhandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLhandler.swift; sourceTree = "<group>"; };
+		A3BEF6D62194378900192E7E /* NewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewAssets.xcassets; sourceTree = "<group>"; };
+		A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionClass.swift; sourceTree = "<group>"; };
 		D355F150D52F692499856341 /* Pods-UrbanEaterRestaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +211,7 @@
 				A3BEF4332189A3B800192E7E /* Main.storyboard */,
 				A3BEF4362189A3B900192E7E /* Assets.xcassets */,
 				A3BEF44B2189B3AD00192E7E /* Media.xcassets */,
+				A3BEF6D62194378900192E7E /* NewAssets.xcassets */,
 				A3BEF4382189A3B900192E7E /* LaunchScreen.storyboard */,
 				A3BEF43B2189A3B900192E7E /* Info.plist */,
 			);
@@ -290,6 +295,7 @@
 		A3BEF4502189B6B800192E7E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */,
 				A3BEF4462189AB3B00192E7E /* Themes.swift */,
 				A3BEF4512189B6C400192E7E /* Utilities.swift */,
 			);
@@ -694,6 +700,7 @@
 				A3BEF4BD2189D5CA00192E7E /* SelectGroup.xib in Resources */,
 				A3BEF4AF2189D54A00192E7E /* FoodItemsTableViewCell.xib in Resources */,
 				A3BEF611218D84F000192E7E /* NewOrderTableViewCell.xib in Resources */,
+				A3BEF6D72194378900192E7E /* NewAssets.xcassets in Resources */,
 				A3BEF60F218D84CD00192E7E /* TableCurrentBookingCell.xib in Resources */,
 				A3BEF4682189C4A100192E7E /* Roboto-Light.ttf in Resources */,
 				A3BEF4692189C4A100192E7E /* Roboto-Medium.ttf in Resources */,
@@ -837,6 +844,7 @@
 				A3BEF4A82189D51000192E7E /* EditCatagoryTableViewCell.swift in Sources */,
 				A3BEF4BE2189D5CA00192E7E /* SelectGroup.swift in Sources */,
 				A3BEF4A32189D4B500192E7E /* RecommendedViewController.swift in Sources */,
+				A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */,
 				A3BEF4472189AB3B00192E7E /* Themes.swift in Sources */,
 				A3BEF4A12189D4A700192E7E /* FoodItemsViewController.swift in Sources */,
 				A3BEF604218D838A00192E7E /* GlobalModel.swift in Sources */,

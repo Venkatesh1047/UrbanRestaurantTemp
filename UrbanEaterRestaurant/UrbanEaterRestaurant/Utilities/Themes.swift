@@ -21,6 +21,10 @@ class Themes: NSObject {
     let screenSize:CGRect = UIScreen.main.bounds
     var spinnerView:MMMaterialDesignSpinner=MMMaterialDesignSpinner()
     
+    func showToastView(_ title: String) {
+        //Toast.init(text: title, duration: 2.0).show()
+        topMostVC()?.view.makeToast(title, duration: 2.0, position: .bottom)
+    }
     
     func shownotificationBanner(Msg: String )
     {
@@ -45,10 +49,11 @@ class Themes: NSObject {
     
     func activityView(View:UIView)
     {
-        View.isUserInteractionEnabled = false;
+      //  View.isUserInteractionEnabled = false;
+        topMostVC()?.view.isUserInteractionEnabled = true
         spinnerView.frame=CGRect(x: View.center.x-25, y: View.center.y, width: 50, height: 50)
         spinnerView.lineWidth = 3.0;
-        spinnerView.tintColor = #colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1)
+        spinnerView.tintColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
         //spinnerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2040881849)
         View.addSubview(spinnerView)
         spinnerView.startAnimating()
@@ -56,7 +61,8 @@ class Themes: NSObject {
     
     func removeActivityView(View:UIView)
     {
-        View.isUserInteractionEnabled = true;
+       // View.isUserInteractionEnabled = true;
+        topMostVC()?.view.isUserInteractionEnabled = true
         spinnerView.stopAnimating()
         spinnerView.removeFromSuperview()
     }
@@ -84,5 +90,16 @@ class Themes: NSObject {
             Param = String(describing: Passed_value!)
         }
         return Param as! String
+    }
+    
+    
+    func topMostVC() -> UIViewController?{
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
+        }
+        return nil
     }
 }

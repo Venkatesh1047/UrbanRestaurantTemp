@@ -36,7 +36,5 @@ class RestaurantModel {
         self.res_image = jsonObject["res_image"].string ?? ""
         self.res_name = jsonObject["res_name"].string ?? ""
         self.res_status = jsonObject["res_status"].int
-        
-        
     }
 }

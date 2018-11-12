@@ -60,4 +60,6 @@ class Utilities: NSObject {
         // let trimmedString = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         return trimmedString;
     }
+    
+    
 }
