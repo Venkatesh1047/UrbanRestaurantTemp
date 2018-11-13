@@ -97,6 +97,12 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
             
             cell.acceptBtn.addTarget(self, action: #selector(self.acceptBtnAction(_:)), for: .touchUpInside)
             cell.rejectBtn.addTarget(self, action: #selector(self.rejectBtnAction(_:)), for: .touchUpInside)
+            
+            cell.itemsCollectionView.tag = indexPath.row
+            cell.itemsCollectionView.delegate = self
+            cell.itemsCollectionView.dataSource = self
+            cell.itemsCollectionView.reloadData()
+            
             cell.separatorInset = UIEdgeInsets.zero
             cell.layoutMargins = UIEdgeInsets.zero
             return cell;
@@ -116,6 +122,11 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
             }else{
                 cell.orderStatusLbl.text = "Completed"
             }
+            cell.itemsCollectionView.tag = indexPath.row
+            cell.itemsCollectionView.delegate = self
+            cell.itemsCollectionView.dataSource = self
+            cell.itemsCollectionView.reloadData()
+            
             cell.separatorInset = UIEdgeInsets.zero
             cell.layoutMargins = UIEdgeInsets.zero
             
@@ -154,9 +165,9 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
         let dictObj  = GlobalClass.orderModel.orders[indexPath.row]
         let isAccept = dictObj.isOrderAccepted
         if isAccept && segumentControler.selectedSegmentIndex == 0{
-            return 130
+            return CGFloat(130 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
         }else{
-            return 90
+            return CGFloat(80 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
         }
         
     }
@@ -172,21 +183,22 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBAction func backButtonClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension NewOrdersViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("items count ------>>>",GlobalClass.orderModel.orders[collectionView.tag].items.count)
+        return GlobalClass.orderModel.orders[collectionView.tag].items.count
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemsCollectionViewCell", for: indexPath as IndexPath) as! ItemsCollectionViewCell
+        
+        let item = GlobalClass.orderModel.orders[collectionView.tag]
+        cell.itemNameLbl.text = item.items[indexPath.row].item_name
+        cell.itemPriceLbl.text = item.items[indexPath.row].item_cost
+        return cell
     }
-    */
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected Index >>>>>>>",indexPath.row)
+    }
 }

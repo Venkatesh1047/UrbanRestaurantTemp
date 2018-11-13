@@ -35,9 +35,9 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
                 "orderStatus" : "New",
                 "isOrderAccepted" : false,
                 "items":[["item_name":"Biryani",
-                          "item_cost":"200"],
+                          "item_cost":"200 ₹"],
                          ["item_name":"Roti",
-                          "item_cost":"30"]],
+                          "item_cost":"30 ₹"]],
                 ],
                       [
                         "orderId" : "ODD2222",
@@ -45,11 +45,11 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
                         "orderStatus" : "New",
                         "isOrderAccepted" : false,
                         "items":[["item_name":"Biryani",
-                                  "item_cost":"200"],
+                                  "item_cost":"200 ₹"],
                                  ["item_name":"Roti",
-                                  "item_cost":"30"],
+                                  "item_cost":"30 ₹"],
                                  ["item_name":"Roti",
-                                  "item_cost":"30"]],
+                                  "item_cost":"30 ₹"]],
                         ],
                       [
                         "orderId" : "ODD111",
@@ -57,13 +57,13 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
                         "orderStatus" : "New",
                         "isOrderAccepted" : false,
                         "items":[["item_name":"Biryani",
-                                  "item_cost":"200"],
+                                  "item_cost":"200 ₹"],
                                  ["item_name":"Roti",
-                                  "item_cost":"30"],
+                                  "item_cost":"30 ₹"],
                                  ["item_name":"Roti",
-                                  "item_cost":"30"],
+                                  "item_cost":"30 ₹"],
                                  ["item_name":"Roti",
-                                  "item_cost":"30"]],
+                                  "item_cost":"30 ₹"]],
                         ]]
             ] as [String:Any]
         
@@ -84,7 +84,11 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
         cell.orderIDLbl.text = dictObj.orderId
         cell.orderAmountLbl.text =  dictObj.orderAmount
         cell.noOfItemsLbl.text = String(dictObj.items.count)
-                
+        cell.itemsCollectionView.tag = indexPath.row
+        cell.itemsCollectionView.delegate = self
+        cell.itemsCollectionView.dataSource = self
+        cell.itemsCollectionView.reloadData()
+        
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         
@@ -92,7 +96,7 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return CGFloat(80 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -103,20 +107,22 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
     @IBAction func backBtnClicked(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+extension OrderHistoryViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("items count ------>>>",GlobalClass.orderModel.orders[collectionView.tag].items.count)
+        return GlobalClass.orderModel.orders[collectionView.tag].items.count
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemsCollectionViewCell", for: indexPath as IndexPath) as! ItemsCollectionViewCell
+        
+        let item = GlobalClass.orderModel.orders[collectionView.tag]
+        cell.itemNameLbl.text = item.items[indexPath.row].item_name
+        cell.itemPriceLbl.text = item.items[indexPath.row].item_cost
+        return cell
     }
-    */
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected Index >>>>>>>",indexPath.row)
+    }
 }

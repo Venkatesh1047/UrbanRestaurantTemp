@@ -56,12 +56,28 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
 //        mytapGestureRecognizer1.numberOfTapsRequired = 2
 //        menuTbl.addGestureRecognizer(mytapGestureRecognizer2)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tableTapped))
+        self.menuTbl.addGestureRecognizer(tap)
+        
         menuList = ["Order History","Earning Summary","Table Booking History","Manage Menu","Settings","Help & Support","Logout"]
         menuTbl.delegate = self
         menuTbl.dataSource = self
         dashboardList = ["New Orders","Ongoing Orders","Table Bookings","Completed","Your Earnings"]
         dataList = ["12","15","24","21","$ 3986"]
         isOnline = true
+    }
+    
+    @objc func tableTapped(tap:UITapGestureRecognizer) {
+        let location = tap.location(in: self.menuTbl)
+        let path = self.menuTbl.indexPathForRow(at: location)
+        if let indexPathForRow = path {
+            self.tableView(self.menuTbl, didSelectRowAt: indexPathForRow)
+        } else {
+            // handle tap on empty space below existing rows however you want
+            CloseMenu()
+            isMenuOpen = false
+
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

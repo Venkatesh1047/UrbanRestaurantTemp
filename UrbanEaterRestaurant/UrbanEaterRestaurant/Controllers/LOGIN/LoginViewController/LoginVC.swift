@@ -57,7 +57,6 @@ class LoginVC: UIViewController
             Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.password_empty)
             // Themes.sharedInstance.showToastView(ToastMessages.mobile_number_empty)
         }
-            
         else
         {
             self.LoginWebHit()
@@ -79,7 +78,6 @@ class LoginVC: UIViewController
         ]
         
         print("loginURL ----->>> ", Constants.urls.loginURL)
-        
         print("param login ----->>> ", param)
         
         URLhandler.postUrlSession(urlString: Constants.urls.loginURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in

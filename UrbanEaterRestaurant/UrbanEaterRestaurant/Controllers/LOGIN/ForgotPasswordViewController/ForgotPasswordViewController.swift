@@ -42,8 +42,8 @@ class ForgotPasswordViewController: UIViewController, OTPTextFieldDelegate
     }
     
     func updateUI(){
-        self.otpBtn.alpha = 0.5
-        self.otpBtn.isEnabled = false
+//        self.otpBtn.alpha = 0.5
+//        self.otpBtn.isEnabled = false
         PhoneNumberTxt.placeholderColor("Mobile", color: .placeholderColor)
         newPwdTxt.placeholderColor("New Password", color: .placeholderColor)
         ConfirmNewPwdTxt.placeholderColor("Confirm Password", color: .placeholderColor)
@@ -178,13 +178,13 @@ extension ForgotPasswordViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool{
         
         print(string,range.location,range.length)
-        if textField == PhoneNumberTxt {
-          //  print("length ---->>> \(String(describing: textField.text?.count))")
-            if (textField.text?.count)! >= 9 {
-                self.otpBtn.isEnabled = true
-                self.otpBtn.alpha = 1.0
-            }
-        }
+//        if textField == PhoneNumberTxt {
+//          //  print("length ---->>> \(String(describing: textField.text?.count))")
+//            if (textField.text?.count)! >= 9 {
+//                self.otpBtn.isEnabled = true
+//                self.otpBtn.alpha = 1.0
+//            }
+//        }
         if string == "\n"{
             textField.resignFirstResponder()
             // Return FALSE so that the final '\n' character doesn't get added

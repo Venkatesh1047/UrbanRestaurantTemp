@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15941E7110E9FFF4E9515CE0 /* Pods_UrbanEaterRestaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29FAC68086B0EB2643396D2A /* Pods_UrbanEaterRestaurant.framework */; };
+		A36DB273219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36DB271219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift */; };
+		A36DB274219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A36DB272219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib */; };
 		A3BEF4302189A3B800192E7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF42F2189A3B800192E7E /* AppDelegate.swift */; };
 		A3BEF4322189A3B800192E7E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4312189A3B800192E7E /* ViewController.swift */; };
 		A3BEF4352189A3B800192E7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF4332189A3B800192E7E /* Main.storyboard */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		29FAC68086B0EB2643396D2A /* Pods_UrbanEaterRestaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UrbanEaterRestaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A23F5BE1976B287741E3FCA /* Pods-UrbanEaterRestaurant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.debug.xcconfig"; sourceTree = "<group>"; };
+		A36DB271219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A36DB272219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A3BEF42C2189A3B800192E7E /* UrbanEaterRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UrbanEaterRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BEF42F2189A3B800192E7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3BEF4312189A3B800192E7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +181,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A36DB270219AEB7300DF6ED6 /* ItemsCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				A36DB271219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift */,
+				A36DB272219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib */,
+			);
+			path = ItemsCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		A3BEF4232189A3B800192E7E = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +252,7 @@
 		A3BEF4432189A94700192E7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A36DB270219AEB7300DF6ED6 /* ItemsCollectionViewCell */,
 				A3BEF4E02189DEB200192E7E /* CatagoryTableViewHeaderCell */,
 				A3BEF4B72189D5B200192E7E /* AddItemsPopUpMenu */,
 				A3BEF4B22189D56A00192E7E /* RecommendedTableViewCell */,
@@ -709,6 +723,7 @@
 				A3BEF4B62189D57800192E7E /* RecommendedTableViewCell.xib in Resources */,
 				A3BEF4AE2189D54A00192E7E /* FoodItemsTableViewCell1.xib in Resources */,
 				A3BEF4632189C2E400192E7E /* DashboardCollectionViewCell.xib in Resources */,
+				A36DB274219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,6 +836,7 @@
 				A3BEF4622189C2E400192E7E /* DashboardCollectionViewCell.swift in Sources */,
 				A3BEF4D92189DCED00192E7E /* ChangePasswordViewController.swift in Sources */,
 				A3BEF45B2189BFF000192E7E /* DashboardNewViewController.swift in Sources */,
+				A36DB273219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift in Sources */,
 				A3BEF4912189CA7500192E7E /* EarningsTableViewCell.swift in Sources */,
 				A3BEF4522189B6C400192E7E /* Utilities.swift in Sources */,
 				A3BEF44A2189B33F00192E7E /* CommonNavigationController.swift in Sources */,

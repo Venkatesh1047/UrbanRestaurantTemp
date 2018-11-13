@@ -54,7 +54,7 @@ class Item {
     var item_cost:String = ""
     
     init(_ jsonObject:JSON) {
-        self.item_name = jsonObject["name"].string ?? ""
-        self.item_cost = jsonObject["cost"].string ?? ""
+        self.item_name = jsonObject["item_name"].string ?? ""
+        self.item_cost = jsonObject["item_cost"].string ?? ""
     }
 }
