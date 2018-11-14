@@ -23,7 +23,7 @@
 //
 
 import Foundation
-
+let timeOutInterval = 10.0
 /// A type that can inspect and optionally adapt a `URLRequest` in some manner if necessary.
 public protocol RequestAdapter {
     /// Inspects and adapts the specified `URLRequest` in some manner if necessary and returns the result.
@@ -362,7 +362,8 @@ open class DataRequest: Request {
 
         func task(session: URLSession, adapter: RequestAdapter?, queue: DispatchQueue) throws -> URLSessionTask {
             do {
-                let urlRequest = try self.urlRequest.adapt(using: adapter)
+                var urlRequest = try self.urlRequest.adapt(using: adapter)
+                urlRequest.timeoutInterval = timeOutInterval
                 return queue.sync { session.dataTask(with: urlRequest) }
             } catch {
                 throw AdaptError(error: error)
