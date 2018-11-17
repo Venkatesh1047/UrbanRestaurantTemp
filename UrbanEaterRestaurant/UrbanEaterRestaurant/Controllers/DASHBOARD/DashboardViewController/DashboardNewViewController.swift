@@ -33,7 +33,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+   
         onlineSwitch.layer.cornerRadius = 16
         restarentImgView.layer.cornerRadius = restarentImgView.frame.size.width/2
         restarentImgView.layer.masksToBounds = true
@@ -96,7 +96,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
             titleText = titleText + " Offline?"
         }
         
-        let alertView = JSSAlertView().showAlert(self,title: titleText ,text:nil,buttonText: "CANCEL" ,cancelButtonText:"CONFIRM",color:#colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1))
+        let alertView = JSSAlertView().showAlert(self,title: titleText ,text:nil,buttonText: "CANCEL" ,cancelButtonText:"CONFIRM",color:.themeColor)
         
         alertView.addAction{
             if self.onlineSwitch.isOn == true {
@@ -167,6 +167,16 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell  = tableView.cellForRow(at: indexPath as IndexPath)
+        cell!.contentView.backgroundColor = .themeColor
+    }
+    
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell  = tableView.cellForRow(at: indexPath as IndexPath)
+        cell!.contentView.backgroundColor = UIColor.clear
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // ["Order History","Earning Summary","Table Booking History","Manage Menu","Settings","Help & Support","Logout"] dsasdasd werrwr324314
         let item : String = menuList[indexPath.row]
@@ -230,7 +240,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func logoutAction(){
-        let alertView = JSSAlertView().showAlert(self,title: "Are you sure you want to Logout?" ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM",color: #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1))
+        let alertView = JSSAlertView().showAlert(self,title: "Are you sure you want to Logout?" ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM",color: .themeColor)
         
         alertView.addAction{
             print("no logout --->>>")
@@ -296,7 +306,7 @@ extension DashboardNewViewController :UICollectionViewDelegate,UICollectionViewD
             cell.backgroundColor = #colorLiteral(red: 0.8723144531, green: 0.8723144531, blue: 0.8723144531, alpha: 1)
         }else{
            cell.headerLbl.text = dataList[indexPath.row]
-            cell.headerLbl.textColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
+            cell.headerLbl.textColor = .themeColor
             cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
         

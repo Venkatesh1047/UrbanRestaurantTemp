@@ -26,12 +26,6 @@ class LoginVC: UIViewController
         passwordTxt.autocorrectionType = .no
 
         updateUI()
-//        var deviceToken = ""
-//
-//        if UserDefaults.standard.string(forKey: "deviceToken") != nil
-//        {
-//            deviceToken = UserDefaults.standard.string(forKey: "deviceToken")!
-//        }
  
     }
     

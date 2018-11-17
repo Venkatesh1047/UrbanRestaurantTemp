@@ -8,15 +8,22 @@
 
 import UIKit
 
-class HelpSupportViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class HelpSupportViewController: UIViewController {
     
     @IBOutlet weak var helpTbl: UITableView!
     var menuList = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+                
         
         menuList = ["Contact Us","Feedback","FAQ","Privacy Policy","Terms of Use","Cancellations & Refunds"]
     }
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension HelpSupportViewController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuList.count
@@ -34,23 +41,4 @@ class HelpSupportViewController: UIViewController,UITableViewDataSource,UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

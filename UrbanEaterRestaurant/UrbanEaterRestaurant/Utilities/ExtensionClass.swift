@@ -15,6 +15,7 @@ import UIKit
 let APP_FONT = "Roboto"
 enum AppFonts {
     case Bold, Medium, Regular, Black, BlackItalic, BoldItalic, ExtraBold, ExtraBoldItalic, ExtraLight, Italic, Light, LightItalic, MediumItalic, SemiBold, SemiBoldItalic, Thin, ThinItalic
+    
     var fonts:String{
         switch self {
         case .Bold:
@@ -79,7 +80,6 @@ extension UITextField{
         view.addSubview(imageView)
         self.rightView = view
     }
-    
 }
 
 extension UIColor{
@@ -173,5 +173,15 @@ extension UIViewController{
     }
     @objc func tapped(_ sender:UIGestureRecognizer){
         self.view.endEditing(true)
+    }
+}
+
+// for round corners
+extension UIButton {
+    func roundCorners(_ corners:UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }

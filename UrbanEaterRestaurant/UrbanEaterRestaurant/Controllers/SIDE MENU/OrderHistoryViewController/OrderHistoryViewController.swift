@@ -111,9 +111,9 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
 
 extension OrderHistoryViewController : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("items count ------>>>",GlobalClass.orderModel.orders[collectionView.tag].items.count)
         return GlobalClass.orderModel.orders[collectionView.tag].items.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemsCollectionViewCell", for: indexPath as IndexPath) as! ItemsCollectionViewCell
         
@@ -122,6 +122,7 @@ extension OrderHistoryViewController : UICollectionViewDelegate,UICollectionView
         cell.itemPriceLbl.text = item.items[indexPath.row].item_cost
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected Index >>>>>>>",indexPath.row)
     }

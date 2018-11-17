@@ -48,25 +48,10 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         weekDaysView.layer.cornerRadius = 2.0
         weekEndsView.layer.cornerRadius = 2.0
         
-        dateView1.layer.cornerRadius = 2.0
-        dateView1.layer.borderWidth = 1
-        dateView1.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        dateView1.clipsToBounds = true
-        
-        dateView2.layer.cornerRadius = 2.0
-        dateView2.layer.borderWidth = 1
-        dateView2.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        dateView2.clipsToBounds = true
-        
-        dateView3.layer.cornerRadius = 2.0
-        dateView3.layer.borderWidth = 1
-        dateView3.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        dateView3.clipsToBounds = true
-        
-        dateView4.layer.cornerRadius = 2.0
-        dateView4.layer.borderWidth = 1
-        dateView4.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        dateView4.clipsToBounds = true
+        dateView1.customiseView()
+        dateView2.customiseView()
+        dateView3.customiseView()
+        dateView4.customiseView()
         
         minutesBtn.layer.cornerRadius = 2.0
         minutesBtn.layer.borderWidth = 1
@@ -169,21 +154,13 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         minutesSelectedString = gradePickerValues[row]
         self.view.endEditing(true)
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension UIView {
+    func customiseView(){
+        self.layer.cornerRadius = 2.0
+        self.layer.borderWidth = 1
+        self.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.clipsToBounds = true
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -53,7 +53,7 @@ class Themes: NSObject {
         topMostVC()?.view.isUserInteractionEnabled = true
         spinnerView.frame=CGRect(x: View.center.x-25, y: View.center.y, width: 50, height: 50)
         spinnerView.lineWidth = 3.0;
-        spinnerView.tintColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
+        spinnerView.tintColor = .themeColor
         //spinnerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2040881849)
         topMostVC()?.view.addSubview(spinnerView)
         spinnerView.startAnimating()
