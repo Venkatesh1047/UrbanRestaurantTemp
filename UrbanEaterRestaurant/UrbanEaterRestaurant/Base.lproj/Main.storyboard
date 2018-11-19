@@ -55,7 +55,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PvO-Ll-2Tq" userLabel="MobileNoView">
                                                         <rect key="frame" x="15" y="30" width="345" height="44"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Mobile" translatesAutoresizingMaskIntoConstraints="NO" id="6ka-5k-NIK">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_email" translatesAutoresizingMaskIntoConstraints="NO" id="6ka-5k-NIK">
                                                                 <rect key="frame" x="8" y="10" width="25" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="25" id="qFg-kH-BX2"/>
@@ -70,7 +70,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buc-UX-vVE" userLabel="lineView">
                                                                 <rect key="frame" x="10" y="42" width="335" height="2"/>
@@ -220,9 +220,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="REr-oM-4aQ"/>
                     <connections>
+                        <outlet property="emailTxt" destination="4uC-Rs-T8u" id="qNY-fN-4Ga"/>
                         <outlet property="mainView" destination="0xb-Nr-s5t" id="JIa-ox-2s4"/>
                         <outlet property="passwordTxt" destination="j66-MT-Usi" id="iql-7E-nyg"/>
-                        <outlet property="phoneNumTxt" destination="4uC-Rs-T8u" id="iWc-V8-JO0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0e-OX-P32" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2354,7 +2354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2l-8V-8Sf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7360.8000000000002" y="-65.024630541871929"/>
+            <point key="canvasLocation" x="7310" y="-69"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="2ga-Ff-pDi">
@@ -3566,6 +3566,7 @@
         <image name="backIcon" width="100" height="100"/>
         <image name="ic_Mobile" width="15" height="23"/>
         <image name="ic_dot" width="15" height="15"/>
+        <image name="ic_email" width="17" height="13"/>
         <image name="ic_lock" width="15" height="20"/>
     </resources>
 </document>

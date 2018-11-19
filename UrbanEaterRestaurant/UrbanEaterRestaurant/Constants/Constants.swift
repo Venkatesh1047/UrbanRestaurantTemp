@@ -11,8 +11,7 @@ import Foundation
 class Constants
 {
     static let sharedInstance = Constants()
-   // static let  BaseUrl = "http://13.233.109.143:3007/mobile/"
-    static let  BaseUrl = "http://192.168.100.88:1234/api/v1/"
+    static let  BaseUrl = "http://13.233.109.143:1234/api/v1/"
     
     var selectedTags = [String]()
     //MARK:- Fonts
@@ -23,7 +22,9 @@ class Constants
     }
     
     public struct urls {
-        static let loginURL = "\(BaseUrl)customer/login"
+        
+        static let loginURL = "\(BaseUrl)restaurant/login"
+        static let logoutURL = "\(BaseUrl)restaurant/logout"
     }
 
 }
@@ -39,7 +40,7 @@ public struct ToastMessages {
     static let Some_thing_went_wrong                 = "Something went wrong...🙃"
     static let Invalid_Credentials                            = "Invalid credentials...🤔"
     static let Success                                              = "Success...😀"
-    static let Email_Address_Is_Not_Valid             =  "Email address is not valid"
+    static let Email_Address_Is_Empty             =  "Email address can't empty"
     static let Invalid_Email                                      =  "Invalid Email Address"
     static let Invalid_FirstName                              =  "Invalid Username"
     static let Invalid_Number                                 =  "Invalid Mobile Number"

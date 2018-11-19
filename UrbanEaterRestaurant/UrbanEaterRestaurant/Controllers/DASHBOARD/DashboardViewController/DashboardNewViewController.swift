@@ -247,18 +247,40 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         }
         alertView.addCancelAction({
             print("yes logot --->>>")
-           // self.LogOutWebHit()
-            
+            self.LogOutWebHit()
             self.mainTheme.activityView(View: self.view)
-            _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.moveToLogin(timer:)), userInfo: nil, repeats: false)
         })
     }
     
+    func LogOutWebHit(){
+        
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        
+        let param = [
+            "emailId": data.object(forKey: "subId"),
+            "through": "WEB"
+        ]
+        
+        print("param logOut ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.logoutURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response login ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+                self.moveToLogin()
+            }
+        }
+        
+    }
     
-    @objc func moveToLogin(timer:Timer)
+    @objc func moveToLogin()
     {
         print("go to login")
-        mainTheme.removeActivityView(View: self.view)
+        Themes.sharedInstance.removeActivityView(View: self.view)
+        
         UserDefaults.standard.setValue(nil, forKey: "restaurantInfo")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

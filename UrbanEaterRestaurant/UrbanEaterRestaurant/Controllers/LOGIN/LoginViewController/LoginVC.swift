@@ -14,7 +14,7 @@ import SwiftyJSON
 class LoginVC: UIViewController
 {
     @IBOutlet weak var mainView: UIView!
-    @IBOutlet weak var phoneNumTxt: UITextField!
+    @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
 
     var mainTheme:Themes = Themes()
@@ -22,15 +22,13 @@ class LoginVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        phoneNumTxt.autocorrectionType = .no
-        passwordTxt.autocorrectionType = .no
 
         updateUI()
  
     }
     
     func updateUI(){
-        phoneNumTxt.placeholderColor("Mobile", color: .placeholderColor)
+        emailTxt.placeholderColor("Email", color: .placeholderColor)
         passwordTxt.placeholderColor("Password", color: .placeholderColor)
     }
     
@@ -38,13 +36,14 @@ class LoginVC: UIViewController
     @IBAction func ActionLogin(_ sender: Any)
     {
         print("ActionLogin")
-        
-      //  let passwordString = Utilities() .trimString(string: self.passwordTxt.text!)
-        
-        if Utilities().trimString(string: self.phoneNumTxt.text!)  == ""
+
+        if Utilities().trimString(string: self.emailTxt.text!)  == ""
         {
-            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.mobile_number_empty)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Email_Address_Is_Empty)
           //  Themes.sharedInstance.showToastView(ToastMessages.mobile_number_empty)
+        }
+        else if  !Utilities().isValidEmail(testStr: self.emailTxt.text!){
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Invalid_Email)
         }
         else if Utilities().trimString(string: self.passwordTxt.text!) == ""
         {
@@ -62,11 +61,11 @@ class LoginVC: UIViewController
         self.view.endEditing(true)
         Themes.sharedInstance.activityView(View: self.view)
         
-        let email = "9876543210"//self.phoneNumTxt.text!
-        let password = "testing123"//self.passwordTxt.text!
+        let email = "krithunga_gachibowli@gmail.com"
+        let password = "Krithunga@123"
         
         let param = [
-            "mobileId": email,
+            "emailId": email,
             "password": password,
             "through": "WEB"
         ]
