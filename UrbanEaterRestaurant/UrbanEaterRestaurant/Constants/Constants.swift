@@ -12,6 +12,7 @@ class Constants
 {
     static let sharedInstance = Constants()
     static let  BaseUrl = "http://13.233.109.143:1234/api/v1/"
+    static let BaseUrl1 = "http://192.168.100.88:1234/api/v1/"
     
     var selectedTags = [String]()
     //MARK:- Fonts
@@ -26,6 +27,7 @@ class Constants
         static let loginURL = "\(BaseUrl)restaurant/login"
         static let logoutURL = "\(BaseUrl)restaurant/logout"
         static let changePasswordURL = "\(BaseUrl)restaurant/update-password"
+        static let orderHistoryURL = "\(BaseUrl1)order/by-restaurant"
     }
 
 }

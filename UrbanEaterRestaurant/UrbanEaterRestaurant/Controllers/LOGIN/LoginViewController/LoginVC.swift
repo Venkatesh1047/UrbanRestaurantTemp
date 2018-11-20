@@ -79,7 +79,7 @@ class LoginVC: UIViewController
             if dataResponse.json.exists(){
                 //print("Response login ----->>> ", dataResponse.json)
                 UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: "restaurantInfo")
-                GlobalClass.restModel = RestaurantModel(dataResponse.json)
+                GlobalClass.restModel = RestaurantModel(fromJson: dataResponse.json)
                 self.movoToHome()
             }
         }

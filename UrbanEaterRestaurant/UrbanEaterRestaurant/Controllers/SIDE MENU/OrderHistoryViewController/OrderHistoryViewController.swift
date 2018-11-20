@@ -9,20 +9,53 @@
 import UIKit
 import SwiftyJSON
 
-class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class OrderHistoryViewController: UIViewController {
 
     @IBOutlet weak var orderHistoryTbl: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        DummyData()
+        getOrderHistoryWebHit()
         
         let nibName = UINib(nibName:"OrderHistoryTableViewCell" , bundle: nil)
         orderHistoryTbl.register(nibName, forCellReuseIdentifier: "OrderHistoryCell")
         
-        orderHistoryTbl.delegate = self
-        orderHistoryTbl.dataSource = self
+    }
+    
+    func getOrderHistoryWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        // print("restarentInfo ----->>> ", restarentInfo)
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        // print("param order data ----->>> ", data)
+        let tempArr: NSArray = [data.object(forKey: "subId") ?? ""]
+        let param = [
+            "restaurantId":tempArr
+            ] as [String : Any]
+        
+        print("orderHistoryURL ----->>> ", Constants.urls.orderHistoryURL)
+        print("param order History ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.orderHistoryURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.orderModel = OrderModel(fromJson: dataResponse.json)
+                DispatchQueue.main.async(){
+                    self.orderHistoryTbl.delegate = self
+                    self.orderHistoryTbl.dataSource = self
+                }
+            }
+        }
+    }
+    
+
+
+ 
+
+    @IBAction func backBtnClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func DummyData(){
@@ -68,22 +101,25 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
             ] as [String:Any]
         
         let response = JSON(dictionary)
-        GlobalClass.orderModel = OrderModel(response)
+        GlobalClass.orderModel = OrderModel(fromJson: response)
     }
+}
 
+extension OrderHistoryViewController : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return GlobalClass.orderModel.orders.count
+        return GlobalClass.orderModel.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell : OrderHistoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OrderHistoryCell") as! OrderHistoryTableViewCell
         
-        let dictObj  = GlobalClass.orderModel.orders[indexPath.row]
+        let dictObj  = GlobalClass.orderModel.data[indexPath.row]
         cell.orderIDLbl.text = dictObj.orderId
-        cell.orderAmountLbl.text =  dictObj.orderAmount
-        cell.noOfItemsLbl.text = String(dictObj.items.count)
+        cell.orderAmountLbl.text =  String(dictObj.billing.orderTotal)
+        cell.noOfItemsLbl.text = String(dictObj.order[0].items.count)
+        
         cell.itemsCollectionView.tag = indexPath.row
         cell.itemsCollectionView.delegate = self
         cell.itemsCollectionView.dataSource = self
@@ -96,30 +132,27 @@ class OrderHistoryViewController: UIViewController,UITableViewDelegate,UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(80 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
+        return CGFloat(80 + (28 * GlobalClass.orderModel.data[indexPath.row].order[0].items.count))
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let orederInfo = self.storyboard?.instantiateViewController(withIdentifier: "OrderInfoViewControllerID") as! OrderInfoViewController
-//        self.navigationController?.pushViewController(orederInfo, animated: true)
-    }
-
-    @IBAction func backBtnClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        //        let orederInfo = self.storyboard?.instantiateViewController(withIdentifier: "OrderInfoViewControllerID") as! OrderInfoViewController
+        //        self.navigationController?.pushViewController(orederInfo, animated: true)
     }
 }
 
 extension OrderHistoryViewController : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return GlobalClass.orderModel.orders[collectionView.tag].items.count
+        return GlobalClass.orderModel.data[collectionView.tag].order[0].items.count
+            //GlobalClass.orderModel.orders[collectionView.tag].items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemsCollectionViewCell", for: indexPath as IndexPath) as! ItemsCollectionViewCell
         
-        let item = GlobalClass.orderModel.orders[collectionView.tag]
-        cell.itemNameLbl.text = item.items[indexPath.row].item_name
-        cell.itemPriceLbl.text = item.items[indexPath.row].item_cost
+        let item = GlobalClass.orderModel.data[collectionView.tag].order[0]
+        cell.itemNameLbl.text = item.items[indexPath.row].name
+        cell.itemPriceLbl.text = String(item.items[indexPath.row].finalPrice)
         return cell
     }
     

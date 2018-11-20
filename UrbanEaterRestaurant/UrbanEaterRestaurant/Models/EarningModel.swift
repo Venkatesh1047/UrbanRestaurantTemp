@@ -14,7 +14,7 @@ class EarningModel {
     var message:String = ""
     var totalOrders:String = ""
     var totalEarnings:String = ""
-    var Orders = [Order]()
+    var Orders = [Orderr]()
     
     init(_ jsonObject:JSON) {
         self.error = jsonObject["error"].bool ?? false
@@ -24,14 +24,14 @@ class EarningModel {
         self.Orders = []
         
         for ord in jsonObject["orders"].arrayValue {
-            let orderM = Order(ord)
+            let orderM = Orderr(ord)
             self.Orders.append(orderM)
         }
     }
 }
 
 
-class Order {
+class Orderr {
     var orderId:String = ""
     var orderAmount:String = ""
     var orderStatus: String = ""

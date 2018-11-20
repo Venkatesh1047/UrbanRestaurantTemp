@@ -10,7 +10,7 @@ import UIKit
 import JSSAlertView
 import SwiftyJSON
 
-class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NewOrdersViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchViewHeightConstraint: NSLayoutConstraint!
     
@@ -21,17 +21,41 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setDummyData()
-
+        getOrderHistoryWebHit()
         let nibName = UINib(nibName:"OrderHistoryTableViewCell" , bundle: nil)
         ordersTbl.register(nibName, forCellReuseIdentifier: "OrderHistoryCell")
-        
         let nibName1 = UINib(nibName:"NewOrderTableViewCell" , bundle: nil)
         ordersTbl.register(nibName1, forCellReuseIdentifier: "NewOrderCell")
         
-        ordersTbl.delegate = self
-        ordersTbl.dataSource = self
     }
+    
+    func getOrderHistoryWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+       // print("restarentInfo ----->>> ", restarentInfo)
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+       // print("param order data ----->>> ", data)
+        let tempArr: NSArray = [data.object(forKey: "subId") ?? ""]
+        let param = [
+            "restaurantId":tempArr
+            ] as [String : Any]
+        
+        print("orderHistoryURL ----->>> ", Constants.urls.orderHistoryURL)
+        print("param order History ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.orderHistoryURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.orderModel = OrderModel(fromJson: dataResponse.json)
+                DispatchQueue.main.async(){
+                    self.ordersTbl.delegate = self
+                    self.ordersTbl.dataSource = self
+                }
+            }
+        }
+    }
+    
     
     func setDummyData(){
         let dictionary = [
@@ -62,7 +86,7 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
             ] as [String:Any]
         
         let response = JSON(dictionary)
-        GlobalClass.orderModel = OrderModel(response)
+        GlobalClass.orderModel = OrderModel(fromJson: response)
     }
     
     @IBAction func searchBtnClicked(_ sender: Any) {
@@ -77,23 +101,30 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
         ordersTbl.reloadData()
     }
 
+   
+    
+    @IBAction func backButtonClicked(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+}
+
+extension NewOrdersViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return GlobalClass.orderModel.orders.count
+        return GlobalClass.orderModel.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
+        let dictObj  = GlobalClass.orderModel.data[indexPath.row]
+        let isAccept = dictObj.status
         
-        let dictObj  = GlobalClass.orderModel.orders[indexPath.row]
-        let isAccept = dictObj.isOrderAccepted
-        
-        if isAccept && segumentControler.selectedSegmentIndex == 0{
+        if isAccept==1 && segumentControler.selectedSegmentIndex == 0{
             let cell : NewOrderTableViewCell = tableView.dequeueReusableCell(withIdentifier: "NewOrderCell") as! NewOrderTableViewCell
-
+            
             cell.orderIDLbl.text = dictObj.orderId
-            cell.orderAmountLbl.text = dictObj.orderAmount
-            cell.noOfItemsLbl.text = String(dictObj.items.count)
+            cell.orderAmountLbl.text = String(dictObj.billing.orderTotal)
+            cell.noOfItemsLbl.text = String(dictObj.order[0].items.count)
             
             cell.acceptBtn.addTarget(self, action: #selector(self.acceptBtnAction(_:)), for: .touchUpInside)
             cell.rejectBtn.addTarget(self, action: #selector(self.rejectBtnAction(_:)), for: .touchUpInside)
@@ -111,8 +142,8 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
             let cell : OrderHistoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "OrderHistoryCell") as! OrderHistoryTableViewCell
             
             cell.orderIDLbl.text = dictObj.orderId
-            cell.orderAmountLbl.text =  dictObj.orderAmount
-            cell.noOfItemsLbl.text = String(dictObj.items.count)
+            cell.orderAmountLbl.text =  String(dictObj.billing.orderTotal)
+            cell.noOfItemsLbl.text = String(dictObj.order[0].items.count)
             
             if segumentControler.selectedSegmentIndex == 0 {
                 cell.orderStatusLbl.text = "New"
@@ -162,40 +193,36 @@ class NewOrdersViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let dictObj  = GlobalClass.orderModel.orders[indexPath.row]
-        let isAccept = dictObj.isOrderAccepted
-        if isAccept && segumentControler.selectedSegmentIndex == 0{
-            return CGFloat(130 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
+        let dictObj  = GlobalClass.orderModel.data[indexPath.row]
+        let isAccept = dictObj.status
+        if isAccept==1 && segumentControler.selectedSegmentIndex == 0{
+            return CGFloat(130 + (28 * GlobalClass.orderModel.data[indexPath.row].order[0].items.count))
         }else{
-            return CGFloat(80 + (28 * GlobalClass.orderModel.orders[indexPath.row].items.count))
+            return CGFloat(80 + (28 * GlobalClass.orderModel.data[indexPath.row].order[0].items.count))
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if segumentControler.selectedSegmentIndex == 0 {
-            let dictObj  = GlobalClass.orderModel.orders[indexPath.row]
-            dictObj.isOrderAccepted = true
+            let dictObj  = GlobalClass.orderModel.data[indexPath.row]
+            dictObj.status = 0
             ordersTbl.reloadData()
         }
-    }
-    
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
     }
 }
 
 extension NewOrdersViewController : UICollectionViewDelegate,UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("items count ------>>>",GlobalClass.orderModel.orders[collectionView.tag].items.count)
-        return GlobalClass.orderModel.orders[collectionView.tag].items.count
+       // print("items count ------>>>",GlobalClass.orderModel.orders[collectionView.tag].items.count)
+        return GlobalClass.orderModel.data[collectionView.tag].order[0].items.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemsCollectionViewCell", for: indexPath as IndexPath) as! ItemsCollectionViewCell
         
-        let item = GlobalClass.orderModel.orders[collectionView.tag]
-        cell.itemNameLbl.text = item.items[indexPath.row].item_name
-        cell.itemPriceLbl.text = item.items[indexPath.row].item_cost
+        let item = GlobalClass.orderModel.data[collectionView.tag].order[0]
+        cell.itemNameLbl.text = item.items[indexPath.row].name
+        cell.itemPriceLbl.text = String(item.items[indexPath.row].finalPrice)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

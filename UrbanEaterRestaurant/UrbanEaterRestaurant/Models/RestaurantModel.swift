@@ -11,31 +11,64 @@ import UIKit
 import SwiftyJSON
 
 class RestaurantModel {
-    var error:Bool = false
-    var message:String = ""
-    var email:String = ""
-    var availability:Int!
-    var owner_name:String = ""
     
-    var res_number:String = ""
-    var res_address:String = ""
-    var res_id:String = ""
-    var res_image:String = ""
-    var res_name:String = ""
-    var res_status:Int!
+    var code : Int!
+    var data : RestaurantData!
+    var message : String!
+    var name : String!
+    var statusCode : Int!
     
-    init(_ jsonObject:JSON){
-        self.error = jsonObject["error"].bool ?? false
-        self.message = jsonObject["message"].string ?? ""
-        self.email = jsonObject["email"].string ?? ""
-        self.availability = jsonObject["availability"].int
-        self.owner_name = jsonObject["owner_name"].string ?? ""
+    
+    /**
+     * Instantiate the instance using the passed json values to set the properties values
+     */
+    
+    init(fromJson json: JSON!) {
+        if json.isEmpty{
+            return
+        }
         
-        self.res_number = jsonObject["res_number"].string ?? ""
-        self.res_address = jsonObject["res_address"].string ?? ""
-        self.res_id = jsonObject["res_id"].string ?? ""
-        self.res_image = jsonObject["res_image"].string ?? ""
-        self.res_name = jsonObject["res_name"].string ?? ""
-        self.res_status = jsonObject["res_status"].int
+        code = json["code"].int ?? 0
+        let dataJson = json["data"]
+        if !dataJson.isEmpty{
+            data = RestaurantData(fromJson: dataJson)
+        }else{
+            data = RestaurantData(fromJson: JSON.null)
+        }
+        
+        message = json["message"].string ?? ""
+        name = json["name"].string ?? ""
+        statusCode = json["statusCode"].int ?? 0
+    }
+}
+
+class RestaurantData{
+    var ctdAt : String!
+    var ctdOn : Int!
+    var deviceToken : String!
+    var id : String!
+    var role : String!
+    var sessionId : String!
+    var subId : String!
+    var through : String!
+    
+    /**
+     * Instantiate the instance using the passed json values to set the properties values
+     */
+    
+    init(fromJson json: JSON!) {
+        if json.isEmpty{
+            return
+        }
+        
+        ctdAt = json["ctdAt"].string ?? ""
+        ctdOn = json["ctdOn"].int ?? 0
+        deviceToken = json["deviceToken"].string ?? ""
+        id = json["id"].string ?? ""
+        role = json["role"].string ?? ""
+        sessionId = json["sessionId"].string ?? ""
+        subId = json["subId"].string ?? ""
+        through = json["through"].string ?? ""
+        
     }
 }
