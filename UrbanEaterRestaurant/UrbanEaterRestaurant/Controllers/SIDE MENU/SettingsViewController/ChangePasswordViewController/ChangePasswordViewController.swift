@@ -31,70 +31,68 @@ class ChangePasswordViewController: UIViewController {
     {
        // let newpass:String = password.text!
         
-        if password.text != confirmPassword.text
-        {
-            //  self.view.makeToast("Confirm Password doesnot match with the New Password".MSlocalized, duration: 3.0, position: .center)
-            Themes.sharedInstance.shownotificationBanner(Msg: "Confirm Password doesnot match with the New Password")
+        if self.commonUtlity.trimString(string: oldpassword.text!) == ""{
+            
+            //self.view.makeToast("Enter your Password".MSlocalized, duration: 3.0, position: .center)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Invalid_Password)
         }
+        else if !self.isStrongPassword(password: oldpassword.text!) || !isvalidPassword(oldpassword.text!)
+        {
+            // self.view.makeToast("Password should be at least 6 characters, which Contain At least One uppercase, One lower case, One Numeric digit.".MSlocalized, duration: 3.0, position: .center)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Invalid_Strong_Password)
+        }
+        else if self.commonUtlity.trimString(string: password.text!) == ""{
+            
+            //self.view.makeToast("Enter your Password".MSlocalized, duration: 3.0, position: .center)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Invalid_Password)
+        }
+
         else if !self.isStrongPassword(password: password.text!) || !isvalidPassword(password.text!)
         {
             // self.view.makeToast("Password should be at least 6 characters, which Contain At least One uppercase, One lower case, One Numeric digit.".MSlocalized, duration: 3.0, position: .center)
-            Themes.sharedInstance.shownotificationBanner(Msg: "Password should be at least 6 characters, which Contain At least One uppercase, One lower case, One Numeric digit.")
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Invalid_Strong_Password)
         }
-        else if (self.commonUtlity.trimString(string: password.text!) == "")||(self.commonUtlity.trimString(string: confirmPassword.text!) == "")||(self.commonUtlity.trimString(string: oldpassword.text!) == ""){
-            
-            //self.view.makeToast("Enter your Password".MSlocalized, duration: 3.0, position: .center)
-            Themes.sharedInstance.shownotificationBanner(Msg: "Enter your Password")
+        else if password.text != confirmPassword.text
+        {
+            //  self.view.makeToast("Confirm Password doesnot match with the New Password".MSlocalized, duration: 3.0, position: .center)
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.Password_Missmatch)
         }
+        
         else{
-            //self.validatePasswordChange()
+            self.ChangePasswordWebHit()
         }
         
     }
-//    func validatePasswordChange()
-//    {
-//
-//        Themes.sharedInstance.activityView(View: self.view)
-//
-//
-//        let rest_id = self.commonUtlity.getRestuarentID()
-//        let param = ["rest_id": Themes.sharedInstance.CheckNullvalue(Passed_value: rest_id),
-//                     "current_pass": Themes.sharedInstance.CheckNullvalue(Passed_value: oldpassword.text),
-//                     "new_pass":Themes.sharedInstance.CheckNullvalue(Passed_value: confirmPassword.text)] as [String : Any]
-//
-//        print ("data param \(param)")
-//
-//        URLhandler.sharedinstance.makeCall(url: Constant.changePassword, param: param as NSDictionary) { (response, error) -> ()! in
-//            if(error == nil){
-//                print("The password has been changed \(String(describing: response))")
-//                Themes.sharedInstance.removeActivityView(View: self.view)
-//                if(response != nil){
-//                    if let DictData = response as? NSDictionary
-//                    {
-//                        let status = Themes.sharedInstance.CheckNullvalue(Passed_value: DictData["status"])
-//                        if status == "1"{
-//                            let message = Themes.sharedInstance.CheckNullvalue(Passed_value: DictData["message"])
-//                            self.view.makeToast(message, duration: 3.0, position: .center)
-//                        }
-//                        else if status == "0"{
-//                            let errorMessage = Themes.sharedInstance.CheckNullvalue(Passed_value: DictData["errors"])
-//                            self.view.makeToast(errorMessage, duration: 3.0, position: .center)
-//                        }
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                Themes.sharedInstance.removeActivityView(View: self.view)
-//                print("errorData",error)
-//            }
-//            print("errorDataValueDate",Themes.sharedInstance.CheckNullvalue(Passed_value: error))
-//            return ()
-//
-//        }
-//
-//    }
     
+    
+    func ChangePasswordWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        
+        let param = [
+            "emailId": data.object(forKey: "subId") ?? "raju@gmail.com",
+            "currentPassword": oldpassword.text ?? "1234567",
+            "newPassword": password.text ?? "1234567"
+            ] as [String:Any]
+        
+        print("param  ChangePassword ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.changePasswordURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                    self.moveBack()
+                })
+            }
+        }
+        
+    }
+
     public func isStrongPassword(password : String) -> Bool
     {
         let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()-_=+{}|?>.<,:;~`’]{6,}$"
@@ -106,7 +104,11 @@ class ChangePasswordViewController: UIViewController {
         return passwordTest.evaluate(with: password)
     }
     @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+       self.moveBack()
+    }
+    
+    func moveBack(){
+         self.navigationController?.popViewController(animated: true)
     }
 }
 
