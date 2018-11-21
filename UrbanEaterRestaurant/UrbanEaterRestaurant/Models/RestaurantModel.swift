@@ -10,6 +10,47 @@
 import UIKit
 import SwiftyJSON
 
+let KEY_ID            = "id"
+let KEY_DELIVERYTIME  = "deliveryTime"
+let KEY_TIMINGS = "timimgs"
+let KEY_WEEKDAY = "weekDay"
+let KEY_WEEKEND = "weekEnd"
+let KEY_STARTAT = "startAt"
+let KEY_ENDAT = "endAt"
+let KEY_STATUS = "status"
+
+class BusinessHourParameters{
+    var id:String!
+    var deliveryTime:Int!
+
+    var parameters = [String:AnyObject]()
+    var timings = [String:AnyObject]()
+    
+//    var weekday_startAt:String!
+//    var weekday_endAt:String!
+//    var weekend_startAt:String!
+//    var weekend_endAt:String!
+    init(_ id:String, deliveryTime:Int, weekday_startAt:String, weekday_endAt:String, weekend_startAt:String, weekend_endAt:String) {
+        self.id = id
+        self.deliveryTime = deliveryTime
+        self.timings[KEY_WEEKDAY] = [
+            KEY_STARTAT:weekday_startAt,
+            KEY_ENDAT:weekday_endAt,
+            KEY_STATUS:"1"
+            ] as AnyObject
+        
+        self.timings[KEY_WEEKEND] = [
+            KEY_STARTAT:weekend_startAt,
+            KEY_ENDAT:weekend_endAt,
+            KEY_STATUS:"1"
+            ] as AnyObject
+        
+        parameters = [KEY_TIMINGS:self.timings,
+                                  KEY_ID:self.id,
+                                  KEY_DELIVERYTIME:self.deliveryTime] as [String : AnyObject]
+    }
+}
+
 class RestaurantModel {
     
     var code : Int!

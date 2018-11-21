@@ -36,7 +36,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
     var minutesSelectedString = ""
     let dateFormatter = DateFormatter()
     var commonUtlity:Utilities = Utilities()
-    
+    var businessHoursParams:BusinessHourParameters!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +67,50 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         
         minutesPicker.dataSource = self
         minutesPicker.delegate = self
+        
+        
+    }
+    
+    
+    func updateBusinessHoursWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+        
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        // print("restarentInfo ----->>> ", restarentInfo)
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+       // print("restID ---->>>",data.object(forKey: "subId"))
+        
+        //5beeb77309c2a91c6b4814fb
+        self.businessHoursParams = BusinessHourParameters.init(data.object(forKey: "subId") as! String, deliveryTime: Int(minutesSelectedString)!, weekday_startAt: weekDayFromLbl.text!, weekday_endAt: weekDayToLbl.text!, weekend_startAt: weekEndFromLbl.text!, weekend_endAt: weekEndToLbl.text!)
+        
+//        let param = [
+//            "id" : data.object(forKey: "subId") ?? "",
+//            "deliveryTime" : minutesSelectedString,
+//            "timings" : [
+//                "weekDay" : [
+//                    "startAt": weekDayFromLbl.text ?? "",
+//                    "endAt":  weekDayToLbl.text ?? "",
+//                    "status": 1
+//                ],
+//                "weekEnd": [
+//                    "startAt": weekEndFromLbl.text ?? "",
+//                    "endAt": weekEndToLbl.text ?? "",
+//                    "status": 1
+//                ]
+//            ]
+//
+//        ] as [String:Any]
+        print("param --->>>",self.businessHoursParams.parameters)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.businessHourUrl, params: self.businessHoursParams.parameters, header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+
+            }
+        }
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
@@ -91,6 +135,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         }
         
         dateSelectedString = commonUtlity.removeMeridiansfromTime(string: dateSelectedString)
+        dateSelectedString = commonUtlity.trimString(string: dateSelectedString)
 
         if btnTag == 1 {
             weekDayFromLbl.text = dateSelectedString
@@ -138,7 +183,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
     }
     
     @IBAction func saveBtnClicked(_ sender: Any) {
-        
+        updateBusinessHoursWebHit()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

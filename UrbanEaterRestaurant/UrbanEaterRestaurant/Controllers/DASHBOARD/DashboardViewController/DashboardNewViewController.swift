@@ -268,8 +268,10 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
             print("Response login ----->>> ", dataResponse.json)
             Themes.sharedInstance.removeActivityView(View: self.view)
             if dataResponse.json.exists(){
-                let dict = dataResponse.dictionaryFromJson! as NSDictionary
-                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+//                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+//                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+                Themes.sharedInstance.showToastView(ToastMessages.Logout)
+              
                 self.moveToLogin()
             }
         }
