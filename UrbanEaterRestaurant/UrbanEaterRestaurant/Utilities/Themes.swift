@@ -30,7 +30,6 @@ class Themes: NSObject {
     {
         let success = MessageView.viewFromNib(layout: .cardView)
         success.configureTheme(.info)
-        
         success.configureContent(title: "Alert!", body: Msg, iconImage: UIImage.init(named: "NotificationIcon")!, viewTapHandler:  { _ in
             print("Notification View Tap")
             SwiftMessages.hide()

@@ -29,6 +29,7 @@ class Constants
         static let changePasswordURL = "\(BaseUrl)restaurant/update-password"
         static let orderHistoryURL = "\(BaseUrl1)order/by-restaurant"
         static let businessHourUrl = "\(BaseUrl1)restaurant/update/by-id"
+        static let getProfileURl = "\(BaseUrl1)restaurant/by-id"
     }
 
 }
@@ -58,4 +59,10 @@ public struct ToastMessages {
     static let Invalid_SelectedAddressType           = "Please choose address type"
     static let Invalid_Strong_Password               = "Password should be at least 6 characters, which Contain At least 1 uppercase, 1 lower case, 1 Numeric digit."
     static let Invalid_OTP                           =  "Invalid OTP"
+    
+    static let WEEKDAY_START_TIME_EMPTY                    = "Week-day start time can't empty"
+    static let WEEKDAY_END_TIME_EMPTY                      = "Week-day end time can't empty"
+    static let WEEKEND_START_TIME_EMPTY                    = "Week-end start time can't empty"
+    static let WEEKEND_END_TIME_EMPTY                      = "Week-end end time can't empty"
+    static let DELIVARY_TIME_EMPTY                         = "Delivary time can't empty"
 }

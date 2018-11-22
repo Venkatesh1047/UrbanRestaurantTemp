@@ -71,7 +71,7 @@ class ChangePasswordViewController: UIViewController {
         let data = restarentInfo.object(forKey: "data") as! NSDictionary
         
         let param = [
-            "emailId": data.object(forKey: "subId") ?? "raju@gmail.com",
+            "id": data.object(forKey: "subId") ?? "raju@gmail.com",
             "currentPassword": oldpassword.text ?? "1234567",
             "newPassword": password.text ?? "1234567"
             ] as [String:Any]

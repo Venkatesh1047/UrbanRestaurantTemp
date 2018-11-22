@@ -57,6 +57,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         menuTbl.dataSource = self
         dashboardList = ["New Orders","Ongoing Orders","Table Bookings","Completed","Your Earnings"]
         dataList = ["12","15","24","21","$ 3986"]
+
     }
     
     @objc func tableTapped(tap:UITapGestureRecognizer) {

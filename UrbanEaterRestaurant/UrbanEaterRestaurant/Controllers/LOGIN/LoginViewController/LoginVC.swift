@@ -18,7 +18,7 @@ class LoginVC: UIViewController
     @IBOutlet weak var passwordTxt: UITextField!
 
     var mainTheme:Themes = Themes()
-    
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ class LoginVC: UIViewController
         Themes.sharedInstance.activityView(View: self.view)
         
         let email = "krithunga_gachibowli@gmail.com"
-        let password = "Krithunga@123"
+        let password = "Krithunga@1234"
         
         let param = [
             "emailId": email,
@@ -79,7 +79,7 @@ class LoginVC: UIViewController
             if dataResponse.json.exists(){
                 //print("Response login ----->>> ", dataResponse.json)
                 UserDefaults.standard.set(dataResponse.dictionaryFromJson, forKey: "restaurantInfo")
-                GlobalClass.restModel = RestaurantModel(fromJson: dataResponse.json)
+               // self.getRestarentProfile()
                 self.movoToHome()
             }
         }

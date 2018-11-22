@@ -62,13 +62,64 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         saveBtn.layer.cornerRadius = 5.0
         
         datePicker.datePickerMode = UIDatePickerMode.time
+        dateFormatter.dateFormat = "HH:mm"
+        datePicker.locale = Locale(identifier: "en_GB")
         datePicker.addTarget(self, action: #selector(self.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        dateFormatter.dateFormat = "hh:mm a"
-        
         minutesPicker.dataSource = self
         minutesPicker.delegate = self
         
+        getRestarentProfile()
+    }
+    
+    func getRestarentProfile(){
+        Themes.sharedInstance.activityView(View: self.view)
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
         
+        let param = [
+            "id": data.object(forKey: "subId"),
+            ]
+        
+        print("getProfileURl ----->>> ", Constants.urls.getProfileURl)
+        print("param  ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.getProfileURl, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Profile response ----->>> ", dataResponse.json)
+             Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.restModel = RestaurantModel(fromJson: dataResponse.json)
+               // print("rest name ----->>>",GlobalClass.restModel.data.userName)
+                self.updateUI()
+            }
+        }
+    }
+    
+    func updateUI(){
+        self.weekDayFromLbl.text = GlobalClass.restModel.data.timings.weekDay.startAt
+        self.weekDayToLbl.text = GlobalClass.restModel.data.timings.weekDay.endAt
+        self.weekEndFromLbl.text = GlobalClass.restModel.data.timings.weekEnd.startAt
+        self.weekEndToLbl.text = GlobalClass.restModel.data.timings.weekEnd.endAt
+        minutesSelectedString = String(GlobalClass.restModel.data.deliveryTime)
+        self.minutesBtn.setTitle(minutesSelectedString, for: .normal)
+    }
+    
+    func validateInputs(){
+        let delivaryTime = minutesBtn.titleLabel?.text
+      //  print("weekDayFromLbl ---->>",self.weekDayFromLbl.text)
+        if Utilities().trimString(string: self.weekDayFromLbl.text!) == "" {
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.WEEKDAY_START_TIME_EMPTY)
+        }else if Utilities().trimString(string: self.weekDayToLbl.text!) == "" {
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.WEEKDAY_END_TIME_EMPTY)
+        }else if Utilities().trimString(string: self.weekEndFromLbl.text!) == "" {
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.WEEKEND_START_TIME_EMPTY)
+        }else if Utilities().trimString(string: self.weekEndToLbl.text!) == "" {
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.WEEKEND_END_TIME_EMPTY)
+        }else if delivaryTime == "" {
+            Themes.sharedInstance.shownotificationBanner(Msg: ToastMessages.DELIVARY_TIME_EMPTY)
+        }
+        else{
+            updateBusinessHoursWebHit()
+        }
     }
     
     
@@ -78,28 +129,8 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
         // print("restarentInfo ----->>> ", restarentInfo)
         let data = restarentInfo.object(forKey: "data") as! NSDictionary
-       // print("restID ---->>>",data.object(forKey: "subId"))
-        
-        //5beeb77309c2a91c6b4814fb
         self.businessHoursParams = BusinessHourParameters.init(data.object(forKey: "subId") as! String, deliveryTime: Int(minutesSelectedString)!, weekday_startAt: weekDayFromLbl.text!, weekday_endAt: weekDayToLbl.text!, weekend_startAt: weekEndFromLbl.text!, weekend_endAt: weekEndToLbl.text!)
-        
-//        let param = [
-//            "id" : data.object(forKey: "subId") ?? "",
-//            "deliveryTime" : minutesSelectedString,
-//            "timings" : [
-//                "weekDay" : [
-//                    "startAt": weekDayFromLbl.text ?? "",
-//                    "endAt":  weekDayToLbl.text ?? "",
-//                    "status": 1
-//                ],
-//                "weekEnd": [
-//                    "startAt": weekEndFromLbl.text ?? "",
-//                    "endAt": weekEndToLbl.text ?? "",
-//                    "status": 1
-//                ]
-//            ]
-//
-//        ] as [String:Any]
+
         print("param --->>>",self.businessHoursParams.parameters)
         
         URLhandler.postUrlSession(urlString: Constants.urls.businessHourUrl, params: self.businessHoursParams.parameters, header: [:]) { (dataResponse) in
@@ -114,9 +145,11 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
     }
     
     @objc func datePickerValueChanged(sender:UIDatePicker) {
+        sender.locale = Locale(identifier: "en_GB")
+        sender.locale = NSLocale(localeIdentifier: "en_GB") as Locale
         dateFormatter.timeStyle = DateFormatter.Style.short
         dateSelectedString = dateFormatter.string(from: sender.date)
-        //print("dateSelectedString ---->>> \(dateSelectedString)")
+        print("dateSelectedString ---->>> \(dateSelectedString)")
     }
     
     @IBAction func timeChangeBtnClicked(_ sender: UIButton) {
@@ -183,7 +216,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
     }
     
     @IBAction func saveBtnClicked(_ sender: Any) {
-        updateBusinessHoursWebHit()
+        validateInputs()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
