@@ -28,6 +28,10 @@ class LoginVC: UIViewController
     }
     
     func updateUI(){
+        
+        emailTxt.text = "krithunga_gachibowli@gmail.com"
+        passwordTxt.text = "Krithunga@1234"
+        
         emailTxt.placeholderColor("Email", color: .placeholderColor)
         passwordTxt.placeholderColor("Password", color: .placeholderColor)
     }
@@ -60,18 +64,11 @@ class LoginVC: UIViewController
     {
         self.view.endEditing(true)
         Themes.sharedInstance.activityView(View: self.view)
-        
-        let email = "krithunga_gachibowli@gmail.com"
-        let password = "Krithunga@1234"
-        
         let param = [
-            "emailId": email,
-            "password": password,
+            "emailId": emailTxt.text!,
+            "password": passwordTxt.text!,
             "through": "WEB"
-        ]
-        
-        print("loginURL ----->>> ", Constants.urls.loginURL)
-        print("param login ----->>> ", param)
+            ] as [String : Any]
         
         URLhandler.postUrlSession(urlString: Constants.urls.loginURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
             print("Response login ----->>> ", dataResponse.json)

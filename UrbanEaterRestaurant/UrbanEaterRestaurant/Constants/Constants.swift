@@ -11,6 +11,7 @@ import Foundation
 class Constants
 {
     static let sharedInstance = Constants()
+    static let BASEURL_IMAGE = "http://192.168.100.88:1234"
     static let BaseUrl = "http://13.233.109.143:1234/api/v1/"
     static let BaseUrl1 = "http://192.168.100.88:1234/api/v1/"
     

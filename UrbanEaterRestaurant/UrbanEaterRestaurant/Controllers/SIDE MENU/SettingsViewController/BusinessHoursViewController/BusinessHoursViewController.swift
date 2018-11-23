@@ -68,7 +68,11 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
         minutesPicker.dataSource = self
         minutesPicker.delegate = self
         
-        getRestarentProfile()
+        if let _ = GlobalClass.restModel {
+            updateUI()
+        }else{
+             getRestarentProfile()
+        }
     }
     
     func getRestarentProfile(){
@@ -139,7 +143,7 @@ class BusinessHoursViewController: UIViewController,UIPickerViewDelegate,UIPicke
             if dataResponse.json.exists(){
                 let dict = dataResponse.dictionaryFromJson! as NSDictionary
                 Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
-
+                self.getRestarentProfile()
             }
         }
     }

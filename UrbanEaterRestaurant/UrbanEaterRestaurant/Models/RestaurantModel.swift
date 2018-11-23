@@ -25,6 +25,25 @@ class BusinessHourParameters{
 
     var parameters = [String:AnyObject]()
     var timings = [String:AnyObject]()
+    
+    /*
+        {
+            "id": "5beeb77309c2a91c6b4814fb",
+            "deliveryTime": 5,
+            "timings": {
+                "weekDay": {
+                    "startAt": "12:30",
+                    "endAt": "8:18",
+                    "status": "1"
+                },
+                "weekEnd": {
+                    "startAt": "16:30",
+                    "endAt": "5:14",
+                    "status": "1"
+                }
+            }
+    }
+     */
 
     init(_ id:String, deliveryTime:Int, weekday_startAt:String, weekday_endAt:String, weekend_startAt:String, weekend_endAt:String) {
         self.id = id
@@ -46,7 +65,6 @@ class BusinessHourParameters{
                                   KEY_DELIVERYTIME:self.deliveryTime] as [String : AnyObject]
     }
 }
-
 
 class RestaurantModel{
     
@@ -545,67 +563,3 @@ class WeekDay{
     
 }
 
-
-
-//class RestaurantModel {
-//
-//    var code : Int!
-//    var data : RestaurantData!
-//    var message : String!
-//    var name : String!
-//    var statusCode : Int!
-//
-//
-//    /**
-//     * Instantiate the instance using the passed json values to set the properties values
-//     */
-//
-//    init(fromJson json: JSON!) {
-//        if json.isEmpty{
-//            return
-//        }
-//
-//        code = json["code"].int ?? 0
-//        let dataJson = json["data"]
-//        if !dataJson.isEmpty{
-//            data = RestaurantData(fromJson: dataJson)
-//        }else{
-//            data = RestaurantData(fromJson: JSON.null)
-//        }
-//
-//        message = json["message"].string ?? ""
-//        name = json["name"].string ?? ""
-//        statusCode = json["statusCode"].int ?? 0
-//    }
-//}
-//
-//class RestaurantData{
-//    var ctdAt : String!
-//    var ctdOn : Int!
-//    var deviceToken : String!
-//    var id : String!
-//    var role : String!
-//    var sessionId : String!
-//    var subId : String!
-//    var through : String!
-//
-//    /**
-//     * Instantiate the instance using the passed json values to set the properties values
-//     */
-//
-//    init(fromJson json: JSON!) {
-//        if json.isEmpty{
-//            return
-//        }
-//
-//        ctdAt = json["ctdAt"].string ?? ""
-//        ctdOn = json["ctdOn"].int ?? 0
-//        deviceToken = json["deviceToken"].string ?? ""
-//        id = json["id"].string ?? ""
-//        role = json["role"].string ?? ""
-//        sessionId = json["sessionId"].string ?? ""
-//        subId = json["subId"].string ?? ""
-//        through = json["through"].string ?? ""
-//
-//    }
-//}

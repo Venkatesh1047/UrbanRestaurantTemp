@@ -47,6 +47,10 @@ class URLhandler: NSObject {
     }
     // MARK : - Post Api hitting Model
     class func postUrlSession(urlString: String, params: [String : AnyObject] ,header : [String : String] ,  completion completionHandler:@escaping (_ response: DataResponse<Any>) -> ()) {
+        
+        print("web url ----->>> ", urlString)
+        print("param request ----->>> ", params)
+        
         // Theme.sharedInstance.activityView(View: (URLhandler.sharedInstance.topMostVC()?.view)!)
         Alamofire.request(urlString,method: .post, parameters: params,encoding : JSONEncoding.default, headers: header).responseJSON { (response) in
             

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564581944.321066"
+            timestampString = "564668902.33991"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564581944.32113"
+            timestampString = "564668902.340282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564581944.321175"
+            timestampString = "564668902.3405139"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564581944.321216"
+            timestampString = "564668902.340739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564581944.32136"
+            timestampString = "564668902.341019"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "updateBusinessHoursWebHit()"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564581944.321419"
+            timestampString = "564668902.341066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "updateBusinessHoursWebHit()"
             landmarkType = "7">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564581944.321474"
+            timestampString = "564668902.341105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "validateInputs()"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/LOGIN/LoginViewController/LoginVC.swift"
-            timestampString = "564581944.321529"
+            timestampString = "564668902.341148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
             landmarkName = "LoginWebHit()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/LOGIN/LoginViewController/LoginVC.swift"
-            timestampString = "564581944.321575"
+            timestampString = "564668902.341188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "LoginVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -249,46 +249,62 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/EditProfileViewController/EditProfileViewController.swift"
-            timestampString = "564581944.3216209"
+            filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
+            timestampString = "564668902.3412271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
+            timestampString = "564668902.341265"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
+            timestampString = "564668902.341496"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "getRestarentProfile()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UrbanEaterRestaurant.EditProfileViewController.getRestarentProfile() -&gt; ()"
-                  moduleName = "UrbanEaterRestaurant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Nagaraju/%23Projects/UrbanEater_Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/Controllers/SIDE%20MENU/SettingsViewController/EditProfileViewController/EditProfileViewController.swift"
-                  timestampString = "564580251.743252"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "2651">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in UrbanEaterRestaurant.EditProfileViewController.getRestarentProfile() -&gt; ()"
-                  moduleName = "UrbanEaterRestaurant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Nagaraju/%23Projects/UrbanEater_Restaurant/UrbanEaterRestaurant/UrbanEaterRestaurant/Controllers/SIDE%20MENU/SettingsViewController/EditProfileViewController/EditProfileViewController.swift"
-                  timestampString = "564580251.745296"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "39">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
+            timestampString = "564668902.341741"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "updateMenuUI()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

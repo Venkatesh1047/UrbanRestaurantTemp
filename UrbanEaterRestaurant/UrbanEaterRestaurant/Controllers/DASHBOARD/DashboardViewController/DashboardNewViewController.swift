@@ -8,6 +8,7 @@
 
 import UIKit
 import JSSAlertView
+import SDWebImage
 
 class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -57,7 +58,47 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         menuTbl.dataSource = self
         dashboardList = ["New Orders","Ongoing Orders","Table Bookings","Completed","Your Earnings"]
         dataList = ["12","15","24","21","$ 3986"]
+        
+        if let _ = GlobalClass.restModel {
+             self.updateMenuUI()
+            
+        }else{
+           getRestarentProfile()
+        }
 
+    }
+    
+    func getRestarentProfile(){
+        Themes.sharedInstance.activityView(View: self.view)
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        
+        let param = [
+            "id": data.object(forKey: "subId"),
+            ]
+        
+        print("getProfileURl ----->>> ", Constants.urls.getProfileURl)
+        print("param  ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.getProfileURl, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Profile response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.restModel = RestaurantModel(fromJson: dataResponse.json)
+                // print("rest name ----->>>",GlobalClass.restModel.data.userName)
+                self.updateMenuUI()
+            }
+        }
+    }
+    
+    func updateMenuUI(){
+        let restarent = GlobalClass.restModel!
+        let imgstr = Constants.BASEURL_IMAGE + restarent.data.logo
+        let logoUrl = NSURL(string:imgstr)!
+        // self.profilePicImgView.sd_setImage(with: logoUrl as URL, completed: nil)
+        self.restarentImgView.sd_setImage(with: logoUrl as URL, placeholderImage: #imageLiteral(resourceName: "PlaceHolderImage"), options: .cacheMemoryOnly, completed: nil)
+        self.restarentNameLbl.text = GlobalClass.restModel.data.name
+        self.restLocationLbl.text = GlobalClass.restModel.data.areaName
     }
     
     @objc func tableTapped(tap:UITapGestureRecognizer) {

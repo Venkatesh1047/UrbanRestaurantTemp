@@ -46,7 +46,15 @@ class EditProfileViewController: UIViewController {
         profilePicImgView.layer.borderWidth = 3
         profilePicImgView.layer.borderColor = #colorLiteral(red: 0.7879231572, green: 0.7879231572, blue: 0.7879231572, alpha: 1)
         
-         getRestarentProfile()
+       //
+        if let value = GlobalClass.restModel{
+            print("value ---->>",value)
+            self.updateUI()
+        }else{
+             print("need api call ----->>>")
+            getRestarentProfile()
+        }
+
     }
     
     
@@ -74,11 +82,11 @@ class EditProfileViewController: UIViewController {
     
     func updateUI(){
         
-
         let restarent = GlobalClass.restModel!
-        let imgstr = "http://192.168.100.88:1234" + restarent.data.logo
+        let imgstr = Constants.BASEURL_IMAGE + restarent.data.logo
         let logoUrl = NSURL(string:imgstr)!
-        self.profilePicImgView.sd_setImage(with: logoUrl as URL, completed: nil)
+       // self.profilePicImgView.sd_setImage(with: logoUrl as URL, completed: nil)
+        self.profilePicImgView.sd_setImage(with: logoUrl as URL, placeholderImage: #imageLiteral(resourceName: "PlaceHolderImage"), options: .cacheMemoryOnly, completed: nil)
         self.nameTxt.text = restarent.data.name
         self.cuisineTxt.text = restarent.data.cuisineIdData[0].name
         self.phoneNumberTxt.text = restarent.data.phone.code + "-" + restarent.data.phone.number
@@ -89,7 +97,8 @@ class EditProfileViewController: UIViewController {
         self.flotNoTxt.text = restarent.data.address.city
         self.landmarkTxt.text = restarent.data.address.state
         
-        self.offerTypeBtn.titleLabel?.text = restarent.data.offer.type
+        self.offerTypeBtn.setTitle(restarent.data.offer.type, for: .normal)
+       // self.offerTypeBtn.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         self.targetAmtTxt.text = String(restarent.data.offer.value)
         self.offerAmtTxt.text = String(restarent.data.offer.minAmount)
         self.maxOffAmtTxt.text = String(restarent.data.offer.maxDiscountAmount)
