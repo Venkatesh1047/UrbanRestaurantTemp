@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.33991"
+            timestampString = "564916952.366443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.340282"
+            timestampString = "564916952.3667721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.3405139"
+            timestampString = "564916952.366986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.340739"
+            timestampString = "564916952.367193"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564668902.341019"
+            timestampString = "564916796.0652699"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564668902.341066"
+            timestampString = "564916796.06534"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564668902.341105"
+            timestampString = "564916796.06539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -250,7 +250,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564668902.3412271"
+            timestampString = "564916796.06546"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -266,27 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.341265"
+            timestampString = "564916952.367516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.341496"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "getRestarentProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "564668902.341741"
+            timestampString = "564916952.367748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "updateMenuUI()"
             landmarkType = "7">
          </BreakpointContent>

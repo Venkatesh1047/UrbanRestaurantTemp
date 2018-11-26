@@ -11,7 +11,9 @@ import Foundation
 class Constants
 {
     static let sharedInstance = Constants()
-    static let BASEURL_IMAGE = "http://192.168.100.88:1234"
+    
+    static let BASEURL_IMAGE = "http://13.233.109.143:1234"
+    static let BASEURL_IMAGE1 = "http://192.168.100.88:1234"
     static let BaseUrl = "http://13.233.109.143:1234/api/v1/"
     static let BaseUrl1 = "http://192.168.100.88:1234/api/v1/"
     
@@ -28,9 +30,9 @@ class Constants
         static let loginURL = "\(BaseUrl)restaurant/login"
         static let logoutURL = "\(BaseUrl)restaurant/logout"
         static let changePasswordURL = "\(BaseUrl)restaurant/update-password"
-        static let orderHistoryURL = "\(BaseUrl1)order/by-restaurant"
-        static let businessHourUrl = "\(BaseUrl1)restaurant/update/by-id"
-        static let getProfileURl = "\(BaseUrl1)restaurant/by-id"
+        static let orderHistoryURL = "\(BaseUrl)order/by-restaurant"
+        static let businessHourUrl = "\(BaseUrl)restaurant/update/by-id"
+        static let getProfileURl = "\(BaseUrl)restaurant/by-id"
     }
 
 }

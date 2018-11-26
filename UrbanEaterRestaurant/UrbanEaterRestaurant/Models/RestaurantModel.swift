@@ -19,6 +19,83 @@ let KEY_STARTAT = "startAt"
 let KEY_ENDAT = "endAt"
 let KEY_STATUS = "status"
 
+class EditProfileParameters{
+    var id:String!
+    var name:String!
+    var userName:String!
+    var address = [String:AnyObject]()
+    var phone = [String:AnyObject]()
+    var offer = [String:AnyObject]()
+    
+    var parameters = [String:AnyObject]()
+    
+    
+    init( id:String, name:String, userName:String, address:String, locality:String, city:String, state:String, mobileNumber:String, offerType:String, value:Int, minAmount:Int,MaxDiscountAmt:Int) {
+        self.id = id
+        self.name = name
+        self.userName = userName
+        let fullAddress = address + "," + locality
+        self.address =  [
+            "line1": address,
+            "line2": locality,
+            "city": city,
+            "state": state,
+            "country": "India",
+            "zipcode": "50008",
+            "fulladdress": fullAddress
+            ] as [String : AnyObject]
+        
+        self.phone = [
+            "code": "91",
+            "number": mobileNumber
+            ] as [String : AnyObject]
+        
+        self.offer = [
+            "type": offerType,
+            "value": value,
+            "minAmount": minAmount,
+            "maxDiscountAmount": MaxDiscountAmt,
+            "status": 1
+            ] as [String:AnyObject]
+        
+        parameters = ["id":self.id,
+                      "name":self.name,
+                      "userName":self.userName,
+                      "phone":self.phone,
+                      "address":self.address,
+                      "offer":self.offer] as [String : AnyObject]
+    }
+    
+    /*
+    {
+    "id": "5beeb77309c2a91c6b4814fb",
+    "name": "Krithunga Gachibowli New",
+    "cuisineId": ["5beac2039785633db4b85216", "5beac2d367b8413ec8e83f5f"],
+    "userName": "krithunga_gachibowli_new",
+    "address": {
+    "line1": "Krithunga Restaurant, 2nd Floor, BVL Complex",
+    "line2": "Ayyappa Society, Madhapur",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "country": "India",
+    "zipcode": "50008",
+    "fulladdress": "Krithunga Restaurant, 2nd Floor, BVL Complex, Ayyappa Society, Madhapur"
+    },
+    "phone": {
+    "code": "91",
+    "number": "963258741"
+    },
+    "offer": {
+    "type": "FLAT/PERCENTAGE",
+    "value": 10,
+    "minAmount": 100,
+    "maxDiscountAmount": 50,
+    "status": 1
+    }
+    }
+    */
+}
+
 class BusinessHourParameters{
     var id:String!
     var deliveryTime:Int!

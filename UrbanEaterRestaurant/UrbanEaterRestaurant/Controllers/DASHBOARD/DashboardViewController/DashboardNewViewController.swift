@@ -59,13 +59,15 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         dashboardList = ["New Orders","Ongoing Orders","Table Bookings","Completed","Your Earnings"]
         dataList = ["12","15","24","21","$ 3986"]
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if let _ = GlobalClass.restModel {
-             self.updateMenuUI()
+            self.updateMenuUI()
             
         }else{
-           getRestarentProfile()
+            getRestarentProfile()
         }
-
     }
     
     func getRestarentProfile(){

@@ -29,7 +29,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var offerAmtTxt: UITextField!
     @IBOutlet weak var targetAmtTxt: UITextField!
     @IBOutlet weak var maxOffAmtTxt: UITextField!
-    
+    var editProfileParams:EditProfileParameters!
     
     var isOffersExpanded = false
     override func viewDidLoad() {
@@ -103,13 +103,34 @@ class EditProfileViewController: UIViewController {
         self.offerAmtTxt.text = String(restarent.data.offer.minAmount)
         self.maxOffAmtTxt.text = String(restarent.data.offer.maxDiscountAmount)
     }
+    // nagaraju
+    func updateProfile(){
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        // print("restarentInfo ----->>> ", restarentInfo)
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        
+        self.editProfileParams = EditProfileParameters.init(id: data.object(forKey: "subId") as! String, name: nameTxt.text!, userName: ownerTxt.text!, address: addressTxt.text!, locality: localityTxt.text!, city: flotNoTxt.text!, state: landmarkTxt.text!, mobileNumber: phoneNumberTxt.text!, offerType: (self.offerTypeBtn.titleLabel?.text!)!, value: Int(targetAmtTxt.text!)!, minAmount: Int(offerAmtTxt.text!)!, MaxDiscountAmt: Int(maxOffAmtTxt.text!)!)
+        
+        print("edit profile param --->>>",self.editProfileParams.parameters)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.businessHourUrl, params: self.editProfileParams.parameters, header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+                self.getRestarentProfile()
+            }
+        }
+
+    }
     
     @IBAction func profilePicButtonClicked(_ sender: Any) {
         
     }
     
     @IBAction func saveBtnClicked(sender: UIButton) {
-        
+        updateProfile()
     }
     
     @IBAction func offersButtonClicked(_ sender: Any) {
