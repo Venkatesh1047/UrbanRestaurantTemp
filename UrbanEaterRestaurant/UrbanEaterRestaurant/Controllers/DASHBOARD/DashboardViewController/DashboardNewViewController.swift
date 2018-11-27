@@ -31,7 +31,7 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
     var dashboardList = [String]()
     var dataList = [String]()
     var mainTheme:Themes = Themes()
-    
+    var isInitialUpdate = true
     override func viewDidLoad() {
         super.viewDidLoad()
    
@@ -101,6 +101,19 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
         self.restarentImgView.sd_setImage(with: logoUrl as URL, placeholderImage: #imageLiteral(resourceName: "PlaceHolderImage"), options: .cacheMemoryOnly, completed: nil)
         self.restarentNameLbl.text = GlobalClass.restModel.data.name
         self.restLocationLbl.text = GlobalClass.restModel.data.areaName
+        
+        if isInitialUpdate {
+            if restarent.data.available == 0 {
+                self.onlineSwitch.isOn = false
+                self.redViewHeightContraint.constant = 20
+            }else{
+                self.onlineSwitch.isOn = true
+                self.redViewHeightContraint.constant = 0
+            }
+            collectionView.reloadData()
+            changeRestarentStatusWebHit(status: restarent.data.available)
+            isInitialUpdate = false
+        }
     }
     
     @objc func tableTapped(tap:UITapGestureRecognizer) {
@@ -155,38 +168,32 @@ class DashboardNewViewController: UIViewController,UITableViewDelegate,UITableVi
             if !self.onlineSwitch.isOn == true {
                 self.onlineSwitch.isOn = false
                 self.redViewHeightContraint.constant = 20
+                self.changeRestarentStatusWebHit(status: 0)
             }else{
                 self.onlineSwitch.isOn = true
                 self.redViewHeightContraint.constant = 0
+                self.changeRestarentStatusWebHit(status: 1)
             }
             self.collectionView.reloadData()
         })
     }
 
-//    @IBAction func swichBtnClicked(_ sender: Any) {
-//        var titleText : String = "Are you sure you want to Go"
-//        if isOnline {
-//            titleText = titleText + " Offline?"
-//        }else{
-//            titleText = titleText + " Online?"
-//        }
-//        let alertView = JSSAlertView().showAlert(self,title: titleText ,text:nil,buttonText: "CANCEL" ,cancelButtonText:"CONFIRM",color:#colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1))
-//        
-//        alertView.addAction{
-//            print("cancel --->>>")
-//        }
-//        alertView.addCancelAction({
-//            print("confirm --->>>")
-//            if self.isOnline {
-//                self.isOnline = false
-//                self.redViewHeightContraint.constant = 5
-//            }else{
-//                self.isOnline = true
-//                self.redViewHeightContraint.constant = 0
-//            }
-//            self.collectionView.reloadData()
-//        })
-//    }
+    func changeRestarentStatusWebHit(status:Int){
+        let param =     [
+            "id": "5beeb77309c2a91c6b4814fb",
+            "available": status] as  [String:AnyObject]
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.businessHourUrl, params: param, header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+               // self.getRestarentProfile()
+            }
+        }
+        
+    }
     
     @objc func myTapAction(recognizer: UITapGestureRecognizer) {
         CloseMenu()
