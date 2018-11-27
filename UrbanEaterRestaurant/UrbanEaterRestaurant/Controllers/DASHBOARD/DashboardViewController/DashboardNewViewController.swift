@@ -16,12 +16,22 @@ class DashboardNewViewController: UIViewController {
 
     var mainTheme:Themes = Themes()
     var isInitialUpdate = true
+    var commonUtlity:Utilities = Utilities()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
    
         onlineSwitch.layer.cornerRadius = 16
-
+        let stringFull = "2018-11-27T08:36:55.384Z"
+                    //   "2018-11-27T08:36:55.384Z"
+                      // "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        // "dd-MM-yyyy HH:mm:ss"
+        let getDate = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "dd-MM-yyyy")
+        print("getDate ---->>>",getDate)
         
+        let getTime = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "hh:mm a")
+        print("getTime ---->>>",getTime)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

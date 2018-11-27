@@ -18,11 +18,12 @@ class TableBookingHistoryViewController: UIViewController,UITableViewDelegate,UI
     @IBOutlet weak var sortDateLbl: UILabel!
     var dateSelectedString : String!
     let dateFormatter = DateFormatter()
+    var commonUtlity:Utilities = Utilities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //
-        setDummyData()
+       // setDummyData()
         
         dateView.layer.cornerRadius = 3.0
         dateView.layer.borderWidth = 1.0
@@ -37,64 +38,58 @@ class TableBookingHistoryViewController: UIViewController,UITableViewDelegate,UI
         
         let nibName = UINib(nibName:"TableBookingHistoryCell" , bundle: nil)
         HistoryTbl.register(nibName, forCellReuseIdentifier: "BookingHistoryCell")
-        
-        HistoryTbl.delegate = self
-        HistoryTbl.dataSource = self
+
     }
     
-    func setDummyData(){
-        let dictionary = [
-            "error":false,
-            "message":"success",
-            "tables":[[
-                "bookDate" : "14/09/2018",
-                "bookTime" : "9:50 AM",
-                "noofPersons" : 3,
-                "personName": "Nagaraju Kamatham",
-                "Email":"nagaraju@hexadots.in",
-                "phoneNumber":"9032363049",
-                "bookingStatus":"New"
-                ],
-                      [
-                        "bookDate" : "15/09/2018",
-                        "bookTime" : "6:30 PM",
-                        "noofPersons" : 9,
-                        "personName": "Nagaraju",
-                        "Email":"kamatham.raju@gmail.com",
-                        "phoneNumber":"9012345678",
-                        "bookingStatus":"New"
-                ],
-                      [
-                        "bookDate" : "06/10/2018",
-                        "bookTime" : "6:30 PM",
-                        "noofPersons" : 11,
-                        "personName": "Hexadots",
-                        "Email":"Hexadots@gmail.com",
-                        "phoneNumber":"9989012345",
-                        "bookingStatus":"New"
-                ]]
-            ] as [String:Any]
-        
-        let response = JSON(dictionary)
-        
-        GlobalClass.bookTableModel = TableModel(response)
+    override func viewWillAppear(_ animated: Bool) {
+        getTableBookingHistoryWebHit()
     }
+    
+    func getTableBookingHistoryWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+
+        let param = [:] as [String : AnyObject]
+        
+        print("tableBookingHistoryURL ----->>> ", Constants.urls.tableBookingHistoryURL)
+       // print("param order History ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.tableBookingHistoryURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.tableBookingModel = TableBookModel(fromJson: dataResponse.json)
+                
+                self.HistoryTbl.delegate = self
+                self.HistoryTbl.dataSource = self
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                    self.HistoryTbl.reloadData()
+                })
+                
+            }
+        }
+    }
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return GlobalClass.bookTableModel.tables.count
+        return GlobalClass.tableBookingModel.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell : TableBookingHistoryCell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryCell") as! TableBookingHistoryCell
         
-        let table = GlobalClass.bookTableModel.tables[indexPath.row]
-        cell.dateLbl.text = table.bookDate
-        cell.timeLbl.text = table.bookTime
-        cell.noofPersonLbl.text = String(table.noofPersons)
-        cell.nameLbl.text = table.personName
-        cell.emailLbl.text = table.Email
-        cell.mobileNoLbl.text = table.phoneNumber
+        let table = GlobalClass.tableBookingModel.data[indexPath.row]
+        let stringFull:String = table.startAt
+        let getDate = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "dd-MM-yyyy")
+        print("getDate ---->>>",getDate)
+        
+        cell.dateLbl.text = getDate
+        cell.timeLbl.text = table.startTime
+        cell.noofPersonLbl.text = String(table.personCount)
+        cell.nameLbl.text = table.contact.name
+        cell.emailLbl.text = table.contact.email
+        cell.mobileNoLbl.text = table.contact.phone
         
         cell.callBtn.tag = indexPath.row
         cell.callBtn.addTarget(self, action: #selector(self.ActionCallBtn(_:)), for: .touchUpInside)
@@ -110,7 +105,7 @@ class TableBookingHistoryViewController: UIViewController,UITableViewDelegate,UI
     
     
     @objc func ActionCallBtn(_ sender:UIButton){
-        let userphNo = GlobalClass.bookTableModel.tables[sender.tag].phoneNumber
+        let userphNo:String = GlobalClass.tableBookingModel.data[sender.tag].contact.phone
         if userphNo != "" {
             
             guard let number = URL(string: "telprompt://\(userphNo)") else { return }

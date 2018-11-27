@@ -13,74 +13,81 @@ import SwiftyJSON
 class TableBookingsViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     @IBOutlet weak var bookingsTbl: UITableView!
     @IBOutlet weak var segumentControler: UISegmentedControl!
+    var commonUtlity:Utilities = Utilities()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setDummyData()
-        
         let nibName = UINib(nibName:"TableCurrentBookingCell" , bundle: nil)
         bookingsTbl.register(nibName, forCellReuseIdentifier: "CurrentBookingCell")
         
         let nibName1 = UINib(nibName:"TableBookingHistoryCell" , bundle: nil)
         bookingsTbl.register(nibName1, forCellReuseIdentifier: "BookingHistoryCell")
-        
-        bookingsTbl.delegate = self
-        bookingsTbl.dataSource = self
+
         
     }
     
-    func setDummyData(){
-        let dictionary = [
-            "error":false,
-            "message":"success",
-            "tables":[[
-                "bookDate" : "14/09/2018",
-                "bookTime" : "9:50 AM",
-                "noofPersons" : 3,
-                "personName": "Nagaraju Kamatham",
-                "Email":"nagaraju@hexadots.in",
-                "phoneNumber":"9032363049",
-                "bookingStatus":"New"
-                ],
-                      [
-                        "bookDate" : "15/09/2018",
-                        "bookTime" : "6:30 PM",
-                        "noofPersons" : 9,
-                        "personName": "Nagaraju",
-                        "Email":"kamatham.raju@gmail.com",
-                        "phoneNumber":"9012345678",
-                        "bookingStatus":"New"
-                ]]
-            ] as [String:Any]
-        
-        let response = JSON(dictionary)
-        
-        GlobalClass.bookTableModel = TableModel(response)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getTableBookingHistoryWebHit()
     }
     
-    
+    func getTableBookingHistoryWebHit(){
+        Themes.sharedInstance.activityView(View: self.view)
+        
+        let param = [:] as [String : AnyObject]
+        
+        print("tableBookingHistoryURL ----->>> ", Constants.urls.tableBookingHistoryURL)
+        // print("param order History ----->>> ", param)
+        
+        URLhandler.postUrlSession(urlString: Constants.urls.tableBookingHistoryURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+            print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                GlobalClass.tableBookingModel = TableBookModel(fromJson: dataResponse.json)
+                
+                self.bookingsTbl.delegate = self
+                self.bookingsTbl.dataSource = self
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                    self.bookingsTbl.reloadData()
+                })
+                
+            }
+        }
+    }
+
     @IBAction func segumentControllerClicked(_ sender: Any) {
         bookingsTbl.reloadData()
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return GlobalClass.bookTableModel.tables.count
+        if segumentControler.selectedSegmentIndex == 0 {
+            return GlobalClass.tableBookingModel.current.count
+        }else if segumentControler.selectedSegmentIndex == 1 {
+            return GlobalClass.tableBookingModel.completed.count
+        }else{
+            return GlobalClass.tableBookingModel.rejected.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         if segumentControler.selectedSegmentIndex == 0 {
             let cell : TableCurrentBookingCell = tableView.dequeueReusableCell(withIdentifier: "CurrentBookingCell") as! TableCurrentBookingCell
-            let table = GlobalClass.bookTableModel.tables[indexPath.row]
-            cell.dateLbl.text = table.bookDate
-            cell.timeLbl.text = table.bookTime
-            cell.noofPersonLbl.text = String(table.noofPersons)
-            cell.nameLbl.text = table.personName
-            cell.emailLbl.text = table.Email
-            cell.mobileNoLbl.text = table.phoneNumber
+            let table = GlobalClass.tableBookingModel.current[indexPath.row]
+    
+            let stringFull:String = table.startAt
+            let getDate = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "dd-MM-yyyy")
+            print("getDate ---->>>",getDate)
+            
+            cell.dateLbl.text = getDate
+            cell.timeLbl.text = table.startTime
+            cell.noofPersonLbl.text = String(table.personCount)
+            cell.nameLbl.text = table.contact.name
+            cell.emailLbl.text = table.contact.email
+            cell.mobileNoLbl.text = table.contact.phone
             
             cell.callBtn.tag = indexPath.row
             cell.rejectBtn.tag = indexPath.row
@@ -95,13 +102,24 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
         }else {
             let cell : TableBookingHistoryCell = tableView.dequeueReusableCell(withIdentifier: "BookingHistoryCell") as! TableBookingHistoryCell
             
-            let table = GlobalClass.bookTableModel.tables[indexPath.row]
-            cell.dateLbl.text = table.bookDate
-            cell.timeLbl.text = table.bookTime
-            cell.noofPersonLbl.text = String(table.noofPersons)
-            cell.nameLbl.text = table.personName
-            cell.emailLbl.text = table.Email
-            cell.mobileNoLbl.text = table.phoneNumber
+            var table:TableBookingData!
+            if segumentControler.selectedSegmentIndex == 1 {
+                table = GlobalClass.tableBookingModel.completed[indexPath.row]
+            }else{
+                table = GlobalClass.tableBookingModel.rejected[indexPath.row]
+            }
+            
+            
+            
+            let stringFull:String = table.startAt
+            let getDate = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "dd-MM-yyyy")
+            print("getDate ---->>>",getDate)
+            cell.dateLbl.text = getDate
+            cell.timeLbl.text = table.startTime
+            cell.noofPersonLbl.text = String(table.personCount)
+            cell.nameLbl.text = table.contact.name
+            cell.emailLbl.text = table.contact.email
+            cell.mobileNoLbl.text = table.contact.phone
             
             cell.callBtn.tag = indexPath.row
             cell.callBtn.addTarget(self, action: #selector(self.ActionCallBtn(_:)), for: .touchUpInside)

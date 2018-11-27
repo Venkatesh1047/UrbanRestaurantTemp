@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Utilities/Utilities.swift"
-            timestampString = "564484261.754431"
+            timestampString = "565020710.541973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "removeMeridiansfromTime(string:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "565009165.95623"
+            timestampString = "565020710.5420541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "onlineOfflineSwitchValueChanged(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/NewOrdersViewController/NewOrdersViewController.swift"
-            timestampString = "565009165.956442"
+            timestampString = "565020710.542271"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564925764.6542391"
+            timestampString = "565014967.267415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564925764.654328"
+            timestampString = "565014967.267469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "138"
@@ -154,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564925764.6544091"
+            timestampString = "565014967.2675411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/SIDE MENU/SettingsViewController/BusinessHoursViewController/BusinessHoursViewController.swift"
-            timestampString = "564925764.654532"
+            timestampString = "565014967.267638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/DashboardViewController/DashboardNewViewController.swift"
-            timestampString = "565009165.956645"
+            timestampString = "565020710.5425299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "getRestarentProfile()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,12 +234,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "UrbanEaterRestaurant/Controllers/Accounts/AccountsViewController.swift"
-            timestampString = "565009165.956705"
+            timestampString = "565020710.5425889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
             landmarkName = "logoutAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Utilities/Utilities.swift"
+            timestampString = "565020710.542635"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getDateRTimeFromiSO(string:formate:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/TableBookingViewController/TableBookingsViewController.swift"
+            timestampString = "565020710.54268"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/TableBookingViewController/TableBookingsViewController.swift"
+            timestampString = "565020710.54301"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "getTableBookingHistoryWebHit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UrbanEaterRestaurant/Controllers/DASHBOARD/TableBookingViewController/TableBookingsViewController.swift"
+            timestampString = "565020710.543237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getTableBookingHistoryWebHit()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

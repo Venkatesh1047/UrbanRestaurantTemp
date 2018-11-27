@@ -80,6 +80,7 @@
 		A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */; };
 		A3FDDB8921AD2FB400524AF4 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB8821AD2FB400524AF4 /* AccountsViewController.swift */; };
 		A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */; };
+		A3FDDB8D21AD755600524AF4 /* TableBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB8C21AD755600524AF4 /* TableBookModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionClass.swift; sourceTree = "<group>"; };
 		A3FDDB8821AD2FB400524AF4 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
 		A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		A3FDDB8C21AD755600524AF4 /* TableBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableBookModel.swift; sourceTree = "<group>"; };
 		D355F150D52F692499856341 /* Pods-UrbanEaterRestaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -283,6 +285,7 @@
 				A3BEF5FE218D838A00192E7E /* OrderModel.swift */,
 				A3BEF600218D838A00192E7E /* TableModel.swift */,
 				A3BEF601218D838A00192E7E /* EarningModel.swift */,
+				A3FDDB8C21AD755600524AF4 /* TableBookModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */,
 				A3BEF4A82189D51000192E7E /* EditCatagoryTableViewCell.swift in Sources */,
 				A3BEF4BE2189D5CA00192E7E /* SelectGroup.swift in Sources */,
+				A3FDDB8D21AD755600524AF4 /* TableBookModel.swift in Sources */,
 				A3FDDB8921AD2FB400524AF4 /* AccountsViewController.swift in Sources */,
 				A3BEF4A32189D4B500192E7E /* RecommendedViewController.swift in Sources */,
 				A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */,

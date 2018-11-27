@@ -33,6 +33,7 @@ class Constants
         static let orderHistoryURL = "\(BaseUrl)order/by-restaurant"
         static let businessHourUrl = "\(BaseUrl)restaurant/update/by-id"
         static let getProfileURl = "\(BaseUrl)restaurant/by-id"
+        static let tableBookingHistoryURL = "\(BaseUrl)order-table/all"
     }
 
 }

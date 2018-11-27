@@ -17,6 +17,7 @@ class GlobalModel:NSObject {
     var orderModel:OrderModel!
     var earningModel: EarningModel!
     var bookTableModel: TableModel!
+    var tableBookingModel: TableBookModel!
     
     override init() {
         super.init()
