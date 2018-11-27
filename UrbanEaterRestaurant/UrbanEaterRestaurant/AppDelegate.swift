@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        UITabBar.appearance().tintColor = .themeColor
+        UITabBar.appearance().unselectedItemTintColor = .greyColor
+        UITabBar.appearance().barTintColor = .whiteColor
+        UITabBar.appearance().isTranslucent = false
+        
         self.ReachabilityListener()
         
         self.SetInitialViewController()

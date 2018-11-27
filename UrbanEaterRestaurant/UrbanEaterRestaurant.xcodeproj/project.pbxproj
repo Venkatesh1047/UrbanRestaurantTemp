@@ -78,6 +78,8 @@
 		A3BEF613218D8BDD00192E7E /* URLhandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF612218D8BDD00192E7E /* URLhandler.swift */; };
 		A3BEF6D72194378900192E7E /* NewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF6D62194378900192E7E /* NewAssets.xcassets */; };
 		A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */; };
+		A3FDDB8921AD2FB400524AF4 /* AccountsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB8821AD2FB400524AF4 /* AccountsViewController.swift */; };
+		A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +160,8 @@
 		A3BEF612218D8BDD00192E7E /* URLhandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLhandler.swift; sourceTree = "<group>"; };
 		A3BEF6D62194378900192E7E /* NewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NewAssets.xcassets; sourceTree = "<group>"; };
 		A3BEF6D821994B9B00192E7E /* ExtensionClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionClass.swift; sourceTree = "<group>"; };
+		A3FDDB8821AD2FB400524AF4 /* AccountsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsViewController.swift; sourceTree = "<group>"; };
+		A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D355F150D52F692499856341 /* Pods-UrbanEaterRestaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +238,8 @@
 		A3BEF4412189A3E300192E7E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */,
+				A3FDDB8721AD2F8A00524AF4 /* Accounts */,
 				A3BEF4872189C94B00192E7E /* SIDE MENU */,
 				A3BEF4862189C93500192E7E /* LOGIN */,
 				A3BEF46B2189C63D00192E7E /* DASHBOARD */,
@@ -632,6 +638,14 @@
 			path = URLHandler;
 			sourceTree = "<group>";
 		};
+		A3FDDB8721AD2F8A00524AF4 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				A3FDDB8821AD2FB400524AF4 /* AccountsViewController.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
 		D59BD5387F756B3F5F302754 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,8 +871,10 @@
 				A3BEF48A2189C98200192E7E /* OrderHistoryViewController.swift in Sources */,
 				A3BEF49A2189D43F00192E7E /* ManageMenuViewController.swift in Sources */,
 				A3BEF47F2189C80400192E7E /* OrderHistoryTableViewCell.swift in Sources */,
+				A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */,
 				A3BEF4A82189D51000192E7E /* EditCatagoryTableViewCell.swift in Sources */,
 				A3BEF4BE2189D5CA00192E7E /* SelectGroup.swift in Sources */,
+				A3FDDB8921AD2FB400524AF4 /* AccountsViewController.swift in Sources */,
 				A3BEF4A32189D4B500192E7E /* RecommendedViewController.swift in Sources */,
 				A3BEF6D921994B9B00192E7E /* ExtensionClass.swift in Sources */,
 				A3BEF4472189AB3B00192E7E /* Themes.swift in Sources */,

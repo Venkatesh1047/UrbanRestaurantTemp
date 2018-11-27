@@ -21,12 +21,15 @@ class NewOrdersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getOrderHistoryWebHit()
         let nibName = UINib(nibName:"OrderHistoryTableViewCell" , bundle: nil)
         ordersTbl.register(nibName, forCellReuseIdentifier: "OrderHistoryCell")
         let nibName1 = UINib(nibName:"NewOrderTableViewCell" , bundle: nil)
         ordersTbl.register(nibName1, forCellReuseIdentifier: "NewOrderCell")
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getOrderHistoryWebHit()
     }
     
     func getOrderHistoryWebHit(){
@@ -48,47 +51,17 @@ class NewOrdersViewController: UIViewController {
             Themes.sharedInstance.removeActivityView(View: self.view)
             if dataResponse.json.exists(){
                 GlobalClass.orderModel = OrderModel(fromJson: dataResponse.json)
-                DispatchQueue.main.async(){
-                    self.ordersTbl.delegate = self
-                    self.ordersTbl.dataSource = self
-                }
+
+                self.ordersTbl.delegate = self
+                self.ordersTbl.dataSource = self
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                     self.ordersTbl.reloadData()
+                })
+               
             }
         }
     }
-    
-    
-    func setDummyData(){
-        let dictionary = [
-            "error":false,
-            "message":"success",
-            "orders":[[
-                "orderId" : "ODD3333",
-                "orderAmount" : "₹ 369",
-                "orderStatus" : "New",
-                "isOrderAccepted" : false,
-                "items":[["item_name":"Biryani",
-                          "item_cost":"200"],
-                         ["item_name":"Roti",
-                          "item_cost":"30"]],
-                ],
-                      [
-                        "orderId" : "ODD2222",
-                        "orderAmount" : "₹ 234",
-                        "orderStatus" : "New",
-                        "isOrderAccepted" : false,
-                        "items":[["item_name":"Biryani",
-                                  "item_cost":"200"],
-                                 ["item_name":"Roti",
-                                  "item_cost":"30"],
-                                 ["item_name":"Roti",
-                                  "item_cost":"30"]],
-                        ]]
-            ] as [String:Any]
-        
-        let response = JSON(dictionary)
-        GlobalClass.orderModel = OrderModel(fromJson: response)
-    }
-    
+
     @IBAction func searchBtnClicked(_ sender: Any) {
         searchViewHeightConstraint.constant = 35
     }
@@ -101,11 +74,6 @@ class NewOrdersViewController: UIViewController {
         ordersTbl.reloadData()
     }
 
-   
-    
-    @IBAction func backButtonClicked(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
 }
 
 extension NewOrdersViewController : UITableViewDelegate,UITableViewDataSource {
