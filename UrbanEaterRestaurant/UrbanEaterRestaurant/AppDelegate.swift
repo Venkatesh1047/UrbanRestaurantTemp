@@ -9,14 +9,20 @@
 import UIKit
 import Reachability
 import RAMAnimatedTabBarController
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var IsInternetconnected:Bool=Bool()
-
+    let googleApiKey = "AIzaSyAufQUMZP7qdjtOcGIuNFRSL-8uU6uuvGY"
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSPlacesClient.provideAPIKey(googleApiKey)
+        GMSServices.provideAPIKey(googleApiKey)
         
         UITabBar.appearance().tintColor = .themeColor
         UITabBar.appearance().unselectedItemTintColor = .greyColor

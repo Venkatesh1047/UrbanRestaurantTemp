@@ -11,7 +11,35 @@ import JSSAlertView
 import SwiftMessages
 import MMMaterialDesignSpinner
 
+let TheGlobalPoolManager = Themes.sharedInstance
+
 class Themes: NSObject {
+    
+    
+    override init() {
+        super.init()
+    }
+    
+    func cornerRadius(_ object:AnyObject, cornerRad:CGFloat){
+        object.layer.cornerRadius = cornerRad
+        object.layer.masksToBounds = true
+    }
+    //MARK:- UIButton Border and Corner radius
+    func cornerAndBorder(_ object:AnyObject, cornerRadius : CGFloat , borderWidth : CGFloat, borderColor:UIColor)  {
+        object.layer.borderColor = borderColor.cgColor
+        object.layer.borderWidth = borderWidth
+        object.layer.cornerRadius = cornerRadius
+        object.layer.masksToBounds = true
+    }
+    //MARK:- corner Radius For Header
+    func cornerRadiusForParticularCornerr(_ object:AnyObject,  corners:UIRectCorner,  size:CGSize){
+        let path = UIBezierPath(roundedRect:object.bounds,
+                                byRoundingCorners:corners,
+                                cornerRadii: size)
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path.cgPath
+        object.layer.mask = maskLayer
+    }
     
     static let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
     

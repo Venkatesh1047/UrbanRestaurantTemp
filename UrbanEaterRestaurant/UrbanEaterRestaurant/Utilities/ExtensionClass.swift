@@ -86,6 +86,9 @@ extension UIColor{
     static var themeColor:UIColor{
         return #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
     }
+    static var greenColor:UIColor{
+        return #colorLiteral(red: 0, green: 0.7333333333, blue: 0.3176470588, alpha: 1) //00BB51
+    }
     static var themeDisableColor:UIColor{
         return #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 0.5)
     }
