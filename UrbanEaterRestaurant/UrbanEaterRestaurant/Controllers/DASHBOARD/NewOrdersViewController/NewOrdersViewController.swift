@@ -35,7 +35,6 @@ class NewOrdersViewController: UIViewController {
     func getOrderHistoryWebHit(){
         Themes.sharedInstance.activityView(View: self.view)
         let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
-       // print("restarentInfo ----->>> ", restarentInfo)
         let data = restarentInfo.object(forKey: "data") as! NSDictionary
        // print("param order data ----->>> ", data)
         let tempArr: NSArray = [data.object(forKey: "subId") ?? ""]

@@ -23,7 +23,7 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
     var mainTheme:Themes = Themes()
     var isInitialUpdate = true
     
-    var map_View:GMSMapView!
+    //var map_View:GMSMapView!
     var currentLocat_Btn:UIButton = UIButton()
     var current_Lat:String!
     var current_Long:String!
@@ -61,11 +61,11 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
         collectionView!.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
-        map_View.delegate = self
+        mapView.delegate = self
     }
     func setupMapView() {
-        map_View = GMSMapView.init(frame: CGRect(x: 0, y: 0, width: self.mapView.frame.width, height: self.mapView.frame.height))
-        self.mapView.insertSubview(map_View, belowSubview: self.mapView)
+        //map_View = GMSMapView.init(frame: CGRect(x: 0, y: 0, width: self.mapView.frame.width, height: self.mapView.frame.height))
+        //self.mapView.insertSubview(map_View, belowSubview: self.mapView)
         ModelClassManager.myLocation()
         ModelClassManager.delegate = self
         self.updateUI()
@@ -80,11 +80,11 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
         let UpdateLoc = CLLocationCoordinate2DMake(CLLocationDegrees(lati)!,CLLocationDegrees(longti)!)
         let camera = GMSCameraPosition.camera(withTarget: UpdateLoc, zoom: 18)
         let userLocationMarker = GMSMarker(position: UpdateLoc)
-        userLocationMarker.map = map_View
-        map_View.animate(to: camera)
-        map_View.isMyLocationEnabled = true
-        map_View.settings.myLocationButton = true
-        map_View.padding = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 5)
+        userLocationMarker.map = mapView
+        mapView.animate(to: camera)
+        mapView.isMyLocationEnabled = true
+        mapView.settings.myLocationButton = true
+        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 5)
     }
     //MARK:- IB Action Outlets
     @IBAction func supportBtn(_ sender: UIButton) {
@@ -158,11 +158,15 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
             if !self.onlineSwitch.isOn == true {
                 self.onlineSwitch.isOn = false
                 self.changeRestarentStatusWebHit(status: 0)
-                self.earningViewHightConstraint.constant = 320
+                UIView.performWithoutAnimation {
+                    self.earningViewHightConstraint.constant = 320
+                }
             }else{
                 self.onlineSwitch.isOn = true
                 self.changeRestarentStatusWebHit(status: 1)
-                self.earningViewHightConstraint.constant = 0
+                UIView.performWithoutAnimation {
+                    self.earningViewHightConstraint.constant = 0
+                }
             }
         })
     }

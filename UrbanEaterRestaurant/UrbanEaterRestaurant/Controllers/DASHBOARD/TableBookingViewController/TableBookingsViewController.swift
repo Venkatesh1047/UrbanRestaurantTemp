@@ -14,7 +14,7 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var bookingsTbl: UITableView!
     @IBOutlet weak var segumentControler: UISegmentedControl!
     var commonUtlity:Utilities = Utilities()
-    
+    var selected_table_tag:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +23,7 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
         
         let nibName1 = UINib(nibName:"TableBookingHistoryCell" , bundle: nil)
         bookingsTbl.register(nibName1, forCellReuseIdentifier: "BookingHistoryCell")
-
-        
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         getTableBookingHistoryWebHit()
@@ -35,13 +32,15 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
     func getTableBookingHistoryWebHit(){
         Themes.sharedInstance.activityView(View: self.view)
         
-        let param = [:] as [String : AnyObject]
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        let param = [
+            "restaurantId": data.object(forKey: "subId") ?? ""
+            ] as [String : AnyObject]
         
         print("tableBookingHistoryURL ----->>> ", Constants.urls.tableBookingHistoryURL)
-        // print("param order History ----->>> ", param)
-        
+
         URLhandler.postUrlSession(urlString: Constants.urls.tableBookingHistoryURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
-            print("Response ----->>> ", dataResponse.json)
             Themes.sharedInstance.removeActivityView(View: self.view)
             if dataResponse.json.exists(){
                 GlobalClass.tableBookingModel = TableBookModel(fromJson: dataResponse.json)
@@ -108,9 +107,7 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
             }else{
                 table = GlobalClass.tableBookingModel.rejected[indexPath.row]
             }
-            
-            
-            
+
             let stringFull:String = table.startAt
             let getDate = commonUtlity.getDateRTimeFromiSO(string: stringFull, formate: "dd-MM-yyyy")
             print("getDate ---->>>",getDate)
@@ -130,7 +127,8 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
         }
     }
     
-    @objc func confirmedBtnAction(_ sender: Any){
+    @objc func confirmedBtnAction(_ sender: UIButton){
+        selected_table_tag = sender.tag
         let messageTxt = "Are you sure you want to Confirm this Table order" //+ section[sender.tag]
         
         let alertView = JSSAlertView().showAlert(self,title: messageTxt ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM"
@@ -141,10 +139,12 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
         }
         alertView.addCancelAction({
             print("yes logot --->>>")
+            self.acceptNrejectTableWebApiHit(status:"RES_ACCEPTED" , tableId: GlobalClass.tableBookingModel.current[self.selected_table_tag].id)
         })
     }
     
-    @objc func rejectedBtnAction(_ sender: Any){
+    @objc func rejectedBtnAction(_ sender: UIButton){
+        selected_table_tag = sender.tag
         let messageTxt = "Are you sure you want to reject this Table order" //+ section[sender.tag]
         
         let alertView = JSSAlertView().showAlert(self,title: messageTxt ,text:nil,buttonText: "CANCEL",cancelButtonText:"CONFIRM",color: UIColor.green)
@@ -154,7 +154,42 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
         }
         alertView.addCancelAction({
             print("yes logot --->>>")
+            self.acceptNrejectTableWebApiHit(status:"RES_REJECTED" , tableId: GlobalClass.tableBookingModel.current[self.selected_table_tag].id)
         })
+    }
+    
+    func acceptNrejectTableWebApiHit(status:String,tableId:String){
+
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        
+        let param = [
+            "id": tableId,
+            "restaurantId": data.object(forKey: "subId") ?? "",
+            "status": status
+        ] as [String:AnyObject]
+        
+        Themes.sharedInstance.activityView(View: self.view)
+
+        print("tableAcceptRejectURL ----->>> ", Constants.urls.tableAcceptRejectURL)
+
+        URLhandler.postUrlSession(urlString: Constants.urls.tableAcceptRejectURL, params: param as [String : AnyObject], header: [:]) { (dataResponse) in
+           // print("Response ----->>> ", dataResponse.json)
+            Themes.sharedInstance.removeActivityView(View: self.view)
+            if dataResponse.json.exists(){
+                let dict = dataResponse.dictionaryFromJson! as NSDictionary
+                Themes.sharedInstance.showToastView(dict.object(forKey: "message") as! String)
+                
+                //self.getTableBookingHistoryWebHit()
+                
+                if status == "RES_REJECTED" {
+                    let removedObj = GlobalClass.tableBookingModel.current.remove(at: self.selected_table_tag)
+                    print("removedObj name ---->>>",removedObj.contact.name)
+                    GlobalClass.tableBookingModel.rejected.append(removedObj)
+                    self.bookingsTbl.reloadData()
+                }
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

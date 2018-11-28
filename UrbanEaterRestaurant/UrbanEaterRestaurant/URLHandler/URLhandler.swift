@@ -58,7 +58,7 @@ class URLhandler: NSObject {
             case .success(_):
                 if response.result.value != nil{
                     let dic = response.result.value as! [String : AnyObject]
-                    print("dic ----->>> \(dic)")
+                    print("response ----->>> \(dic)")
                     
                     let stautsCode = dic["statusCode"] as! NSNumber
                     let message     = dic["message"] as! String

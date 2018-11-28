@@ -48,7 +48,11 @@ class TableBookingHistoryViewController: UIViewController,UITableViewDelegate,UI
     func getTableBookingHistoryWebHit(){
         Themes.sharedInstance.activityView(View: self.view)
 
-        let param = [:] as [String : AnyObject]
+        let restarentInfo = UserDefaults.standard.object(forKey: "restaurantInfo") as! NSDictionary
+        let data = restarentInfo.object(forKey: "data") as! NSDictionary
+        let param = [
+            "restaurantId": data.object(forKey: "subId") ?? ""
+            ] as [String : AnyObject]
         
         print("tableBookingHistoryURL ----->>> ", Constants.urls.tableBookingHistoryURL)
        // print("param order History ----->>> ", param)
