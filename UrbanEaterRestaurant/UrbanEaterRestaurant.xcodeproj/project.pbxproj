@@ -87,6 +87,11 @@
 		A3FDDB9821AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FDDB9621AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.xib */; };
 		A3FDDB9921AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB9721AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.swift */; };
 		A3FDDB9B21AE6ABA00524AF4 /* SingleTonClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB9A21AE6ABA00524AF4 /* SingleTonClass.swift */; };
+		A3FDDB9F21AFD08B00524AF4 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDB9D21AFD08B00524AF4 /* DateCell.swift */; };
+		A3FDDBA021AFD08B00524AF4 /* DateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FDDB9E21AFD08B00524AF4 /* DateCell.xib */; };
+		A3FDDBA421AFF40C00524AF4 /* DateSeeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBA221AFF40C00524AF4 /* DateSeeAll.swift */; };
+		A3FDDBA521AFF40C00524AF4 /* DateSeeAll.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FDDBA321AFF40C00524AF4 /* DateSeeAll.xib */; };
+		A3FDDBA921B000C800524AF4 /* SliderToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBA821B000C800524AF4 /* SliderToOpenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +181,11 @@
 		A3FDDB9621AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EarningsSeeAllACollectionViewCell.xib; sourceTree = "<group>"; };
 		A3FDDB9721AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningsSeeAllACollectionViewCell.swift; sourceTree = "<group>"; };
 		A3FDDB9A21AE6ABA00524AF4 /* SingleTonClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleTonClass.swift; sourceTree = "<group>"; };
+		A3FDDB9D21AFD08B00524AF4 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		A3FDDB9E21AFD08B00524AF4 /* DateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateCell.xib; sourceTree = "<group>"; };
+		A3FDDBA221AFF40C00524AF4 /* DateSeeAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSeeAll.swift; sourceTree = "<group>"; };
+		A3FDDBA321AFF40C00524AF4 /* DateSeeAll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSeeAll.xib; sourceTree = "<group>"; };
+		A3FDDBA821B000C800524AF4 /* SliderToOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderToOpenView.swift; sourceTree = "<group>"; };
 		D355F150D52F692499856341 /* Pods-UrbanEaterRestaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +282,7 @@
 		A3BEF4432189A94700192E7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDDB9C21AFD02F00524AF4 /* SelectDateCell */,
 				A3FDDB9521AE67AF00524AF4 /* EarningsSeeAllCell */,
 				A3FDDB9021AE678900524AF4 /* EarningsCollectionViewCell */,
 				A36DB270219AEB7300DF6ED6 /* ItemsCollectionViewCell */,
@@ -310,6 +321,7 @@
 			children = (
 				A3BEF4C02189D67900192E7E /* MJPOPUP */,
 				A3BEF4962189CB4B00192E7E /* ShadowView.swift */,
+				A3FDDBA821B000C800524AF4 /* SliderToOpenView.swift */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -683,6 +695,17 @@
 			path = EarningsSeeAllCell;
 			sourceTree = "<group>";
 		};
+		A3FDDB9C21AFD02F00524AF4 /* SelectDateCell */ = {
+			isa = PBXGroup;
+			children = (
+				A3FDDB9D21AFD08B00524AF4 /* DateCell.swift */,
+				A3FDDB9E21AFD08B00524AF4 /* DateCell.xib */,
+				A3FDDBA221AFF40C00524AF4 /* DateSeeAll.swift */,
+				A3FDDBA321AFF40C00524AF4 /* DateSeeAll.xib */,
+			);
+			path = SelectDateCell;
+			sourceTree = "<group>";
+		};
 		D59BD5387F756B3F5F302754 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -770,6 +793,7 @@
 				A3BEF4682189C4A100192E7E /* Roboto-Light.ttf in Resources */,
 				A3BEF4692189C4A100192E7E /* Roboto-Medium.ttf in Resources */,
 				A3BEF44C2189B3AE00192E7E /* Media.xcassets in Resources */,
+				A3FDDBA521AFF40C00524AF4 /* DateSeeAll.xib in Resources */,
 				A3BEF4352189A3B800192E7E /* Main.storyboard in Resources */,
 				A3BEF4B62189D57800192E7E /* RecommendedTableViewCell.xib in Resources */,
 				A3FDDB9821AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.xib in Resources */,
@@ -777,6 +801,7 @@
 				A3BEF4632189C2E400192E7E /* DashboardCollectionViewCell.xib in Resources */,
 				A3FDDB9421AE67A000524AF4 /* EarningsCollectionViewCell.xib in Resources */,
 				A36DB274219AEBAB00DF6ED6 /* ItemsCollectionViewCell.xib in Resources */,
+				A3FDDBA021AFD08B00524AF4 /* DateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,6 +898,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3BEF4B02189D54A00192E7E /* FoodItemsTableViewCell.swift in Sources */,
+				A3FDDBA421AFF40C00524AF4 /* DateSeeAll.swift in Sources */,
 				A3BEF4B12189D54A00192E7E /* FoodItemsTableViewCell1.swift in Sources */,
 				A3BEF613218D8BDD00192E7E /* URLhandler.swift in Sources */,
 				A3BEF606218D838A00192E7E /* EarningModel.swift in Sources */,
@@ -895,6 +921,7 @@
 				A3BEF4912189CA7500192E7E /* EarningsTableViewCell.swift in Sources */,
 				A3BEF4522189B6C400192E7E /* Utilities.swift in Sources */,
 				A3BEF44A2189B33F00192E7E /* CommonNavigationController.swift in Sources */,
+				A3FDDB9F21AFD08B00524AF4 /* DateCell.swift in Sources */,
 				A3BEF607218D838A00192E7E /* RestaurantModel.swift in Sources */,
 				A3BEF45E2189C09A00192E7E /* MenuTableViewCell.swift in Sources */,
 				A3BEF4972189CB4B00192E7E /* ShadowView.swift in Sources */,
@@ -912,6 +939,7 @@
 				A3BEF603218D838A00192E7E /* OrderModel.swift in Sources */,
 				A3BEF48A2189C98200192E7E /* OrderHistoryViewController.swift in Sources */,
 				A3BEF49A2189D43F00192E7E /* ManageMenuViewController.swift in Sources */,
+				A3FDDBA921B000C800524AF4 /* SliderToOpenView.swift in Sources */,
 				A3BEF47F2189C80400192E7E /* OrderHistoryTableViewCell.swift in Sources */,
 				A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */,
 				A3FDDB9921AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.swift in Sources */,

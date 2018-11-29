@@ -7,35 +7,40 @@
 //
 
 import UIKit
-import CoreLocation
-import GoogleMaps
 import JSSAlertView
 
-class HomeViewController: UIViewController,GMSMapViewDelegate{
+class HomeViewController: UIViewController,SlideToOpenDelegate{
     
     //After Designed Changed Outlets
-    @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var lastPaidEarningsLbl: UILabel!
     @IBOutlet weak var supportBtn: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bookTblCollectionView: UICollectionView!
     @IBOutlet weak var earningsViewInView: UIView!
     @IBOutlet weak var onlineSwitch: UISwitch!
+    @IBOutlet weak var slidetoOpenView: UIView!
+    
     var mainTheme:Themes = Themes()
     var isInitialUpdate = true
+    var daysArr:[String]!
+    var datesArr:[String]!
     
-    //var map_View:GMSMapView!
-    var currentLocat_Btn:UIButton = UIButton()
-    var current_Lat:String!
-    var current_Long:String!
-    var getLatLong_Add:String = String()
-    var myLocation: CLLocation?
-    
+    @IBOutlet weak var tblBookingViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var earningViewHightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        daysArr = ["Today","Friday","Saturday","Sunday","Monday"]
+        datesArr = ["29-11-2018","30-11-2018","01-12-2018","02-12-2018","03-12-2018"]
+        
         collectionView.register(UINib(nibName: "EarningsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EarningsCollectionViewCell")
         collectionView.register(UINib(nibName: "EarningsSeeAllACollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "EarningsSeeAllACollectionViewCell")
-        self.setupMapView()
+        
+        bookTblCollectionView.register(UINib(nibName: "DateCell", bundle: nil), forCellWithReuseIdentifier: "DateCell")
+        bookTblCollectionView.register(UINib(nibName: "DateSeeAll", bundle: nil), forCellWithReuseIdentifier: "DateSeeAll")
+
+        updateUI()
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -47,8 +52,30 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
             getRestarentProfile()
         }
     }
+    
+    func SlideToOpenDelegateDidFinish(switchStatus: Bool) {
+        if switchStatus {
+            print("on---->>>")
+        }else{
+            print("off---->>>")
+        }
+    }
     //MARK:- Update UI
     func updateUI(){
+        
+        let slide = SlideToOpenView(frame: CGRect(x: 0, y: 0, width: self.slidetoOpenView.frame.size.width, height: self.slidetoOpenView.frame.size.height))
+        slide.sliderViewTopDistance = 0
+        slide.sliderCornerRadious = self.slidetoOpenView.frame.size.height/2.0
+        slide.defaultLabelText = "Swipe right to come Online"
+        slide.thumnailImageView.image = #imageLiteral(resourceName: "Slider_holder")
+        slide.thumnailImageView.backgroundColor = .clear
+        slide.draggedView.backgroundColor = .greenColor
+        slide.draggedView.alpha = 0.8
+        slide.delegate = self
+        self.slidetoOpenView.addSubview(slide)
+        self.slidetoOpenView.layer.cornerRadius = self.slidetoOpenView.frame.size.height/2.0
+       // self.slidetoOpenView.backgroundColor = .clear
+
         onlineSwitch.layer.cornerRadius = 16
         TheGlobalPoolManager.cornerAndBorder(self.earningsViewInView, cornerRadius: 8, borderWidth: 0.5, borderColor: .lightGray)
         TheGlobalPoolManager.cornerRadiusForParticularCornerr(self.earningsViewInView, corners: [.bottomRight,.topRight], size: CGSize(width: 8, height: 0))
@@ -59,35 +86,27 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
         layout.minimumLineSpacing = 5
         layout.scrollDirection = .horizontal
         collectionView!.collectionViewLayout = layout
+        collectionView.tag = 111
         collectionView.delegate = self
         collectionView.dataSource = self
-        mapView.delegate = self
-    }
-    func setupMapView() {
-        //map_View = GMSMapView.init(frame: CGRect(x: 0, y: 0, width: self.mapView.frame.width, height: self.mapView.frame.height))
-        //self.mapView.insertSubview(map_View, belowSubview: self.mapView)
-        ModelClassManager.myLocation()
-        ModelClassManager.delegate = self
-        self.updateUI()
-    }
-    func setMap_View(lat:String,long:String){
-        var lati = String()
-        var longti = String()
-        lati = lat
-        longti = long
         
-        
-        let UpdateLoc = CLLocationCoordinate2DMake(CLLocationDegrees(lati)!,CLLocationDegrees(longti)!)
-        let camera = GMSCameraPosition.camera(withTarget: UpdateLoc, zoom: 18)
-        let userLocationMarker = GMSMarker(position: UpdateLoc)
-        userLocationMarker.map = mapView
-        mapView.animate(to: camera)
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
-        mapView.padding = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 5)
+        let layoutBookTbl: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layoutBookTbl.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layoutBookTbl.itemSize = CGSize(width: 100, height: 55)
+        layoutBookTbl.minimumInteritemSpacing = 5
+        layoutBookTbl.minimumLineSpacing = 5
+        layoutBookTbl.scrollDirection = .horizontal
+        bookTblCollectionView!.collectionViewLayout = layoutBookTbl
+
+        bookTblCollectionView.tag = 222
+        bookTblCollectionView.delegate = self
+        bookTblCollectionView.dataSource = self
     }
+ 
+
     //MARK:- IB Action Outlets
     @IBAction func supportBtn(_ sender: UIButton) {
+        
     }
     
     func getRestarentProfile(){
@@ -119,10 +138,12 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
         if isInitialUpdate {
             if restarent.data.available == 0 {
                 self.onlineSwitch.isOn = false
-                self.earningViewHightConstraint.constant = 320
+                self.earningViewHightConstraint.constant = 299
+                self.tblBookingViewHeightConstraint.constant = 150
             }else{
                 self.onlineSwitch.isOn = true
                 self.earningViewHightConstraint.constant = 0
+                self.tblBookingViewHeightConstraint.constant = 0
             }
             
             changeRestarentStatusWebHit(status: restarent.data.available)
@@ -159,13 +180,15 @@ class HomeViewController: UIViewController,GMSMapViewDelegate{
                 self.onlineSwitch.isOn = false
                 self.changeRestarentStatusWebHit(status: 0)
                 UIView.performWithoutAnimation {
-                    self.earningViewHightConstraint.constant = 320
+                    self.earningViewHightConstraint.constant = 299
+                    self.tblBookingViewHeightConstraint.constant = 150
                 }
             }else{
                 self.onlineSwitch.isOn = true
                 self.changeRestarentStatusWebHit(status: 1)
                 UIView.performWithoutAnimation {
                     self.earningViewHightConstraint.constant = 0
+                    self.tblBookingViewHeightConstraint.constant = 0
                 }
             }
         })
@@ -198,31 +221,37 @@ extension UIImage {
         return image!
     }
 }
-extension HomeViewController : ModelClassManagerDelegate{
-    func delegateForLocationUpdate(_ viewCon: SingleTonClass, location: CLLocation) {
-        print("Delegate Called IN AddDeliveryLocationVC")
-        self.myLocation = location
-        if current_Lat == nil && current_Long == nil{
-            current_Lat = "\(location.coordinate.latitude)"
-            current_Long = "\(location.coordinate.longitude)"
-        }
-        self.setMap_View(lat: (current_Lat as NSString) as String, long: (current_Long as NSString) as String)
-    }
-}
+
 extension HomeViewController : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        if  collectionView.tag == 111 {
+            return 8
+        }
+        return daysArr.count + 1
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 7{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EarningsSeeAllACollectionViewCell", for: indexPath as IndexPath) as! EarningsSeeAllACollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell { //
+        if collectionView.tag == 111 {
+            if indexPath.row == 7{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EarningsSeeAllACollectionViewCell", for: indexPath as IndexPath) as! EarningsSeeAllACollectionViewCell
+                return cell
+            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EarningsCollectionViewCell", for: indexPath as IndexPath) as! EarningsCollectionViewCell
+            if indexPath.row % 2 == 0 {
+                cell.paidStatusLbl.backgroundColor = .greenColor
+            }
+            return cell
+        }else {
+            if indexPath.row == daysArr.count{
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateSeeAll", for: indexPath) as! DateSeeAll
+                return cell
+            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath) as! DateCell
+            cell.daylbl.text = daysArr[indexPath.row]
+            cell.dateLbl.text = datesArr[indexPath.row]
+            
             return cell
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EarningsCollectionViewCell", for: indexPath as IndexPath) as! EarningsCollectionViewCell
-        if indexPath.row % 2 == 0 {
-            cell.paidStatusLbl.backgroundColor = .greenColor
-        }
-        return cell
+
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.item)!")

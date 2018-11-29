@@ -95,7 +95,7 @@ class TableBookingsViewController: UIViewController,UITableViewDataSource,UITabl
             cell.confirmBtn.addTarget(self, action: #selector(self.confirmedBtnAction(_:)), for: .touchUpInside)
             cell.callBtn.addTarget(self, action: #selector(self.ActionCallBtn(_:)), for: .touchUpInside)
             cell.separatorInset = UIEdgeInsets.zero
-            cell.layoutMargins = UIEdgeInsets.zero
+            cell.layoutMargins  = UIEdgeInsets.zero
             
             return cell;
         }else {
