@@ -92,6 +92,9 @@
 		A3FDDBA421AFF40C00524AF4 /* DateSeeAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBA221AFF40C00524AF4 /* DateSeeAll.swift */; };
 		A3FDDBA521AFF40C00524AF4 /* DateSeeAll.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3FDDBA321AFF40C00524AF4 /* DateSeeAll.xib */; };
 		A3FDDBA921B000C800524AF4 /* SliderToOpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBA821B000C800524AF4 /* SliderToOpenView.swift */; };
+		A3FDDBAC21B01CB000524AF4 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBAB21B01CB000524AF4 /* NewsViewController.swift */; };
+		A3FDDBB121B01DCD00524AF4 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBB021B01DCD00524AF4 /* NotificationTableViewCell.swift */; };
+		A3FDDBB321B020A700524AF4 /* NotofocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDDBB221B020A700524AF4 /* NotofocationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +189,9 @@
 		A3FDDBA221AFF40C00524AF4 /* DateSeeAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSeeAll.swift; sourceTree = "<group>"; };
 		A3FDDBA321AFF40C00524AF4 /* DateSeeAll.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSeeAll.xib; sourceTree = "<group>"; };
 		A3FDDBA821B000C800524AF4 /* SliderToOpenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderToOpenView.swift; sourceTree = "<group>"; };
+		A3FDDBAB21B01CB000524AF4 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		A3FDDBB021B01DCD00524AF4 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		A3FDDBB221B020A700524AF4 /* NotofocationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotofocationModel.swift; sourceTree = "<group>"; };
 		D355F150D52F692499856341 /* Pods-UrbanEaterRestaurant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UrbanEaterRestaurant.release.xcconfig"; path = "Pods/Target Support Files/Pods-UrbanEaterRestaurant/Pods-UrbanEaterRestaurant.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +268,7 @@
 		A3BEF4412189A3E300192E7E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDDBAA21B01C9E00524AF4 /* News */,
 				A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */,
 				A3FDDB8721AD2F8A00524AF4 /* Accounts */,
 				A3BEF4872189C94B00192E7E /* SIDE MENU */,
@@ -282,6 +289,7 @@
 		A3BEF4432189A94700192E7E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDDBAF21B01DBC00524AF4 /* NewsTableViewCel */,
 				A3FDDB9C21AFD02F00524AF4 /* SelectDateCell */,
 				A3FDDB9521AE67AF00524AF4 /* EarningsSeeAllCell */,
 				A3FDDB9021AE678900524AF4 /* EarningsCollectionViewCell */,
@@ -305,6 +313,7 @@
 		A3BEF4442189A94D00192E7E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A3FDDBB221B020A700524AF4 /* NotofocationModel.swift */,
 				A3FDDB9A21AE6ABA00524AF4 /* SingleTonClass.swift */,
 				A3BEF5FF218D838A00192E7E /* GlobalModel.swift */,
 				A3BEF602218D838A00192E7E /* RestaurantModel.swift */,
@@ -706,6 +715,22 @@
 			path = SelectDateCell;
 			sourceTree = "<group>";
 		};
+		A3FDDBAA21B01C9E00524AF4 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				A3FDDBAB21B01CB000524AF4 /* NewsViewController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		A3FDDBAF21B01DBC00524AF4 /* NewsTableViewCel */ = {
+			isa = PBXGroup;
+			children = (
+				A3FDDBB021B01DCD00524AF4 /* NotificationTableViewCell.swift */,
+			);
+			path = NewsTableViewCel;
+			sourceTree = "<group>";
+		};
 		D59BD5387F756B3F5F302754 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,7 +843,9 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/HTHorizontalSelectionList/HTHorizontalSelectionList.framework",
 				"${BUILT_PRODUCTS_DIR}/JSSAlertView/JSSAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/M13BadgeView/M13BadgeView.framework",
 				"${BUILT_PRODUCTS_DIR}/MMMaterialDesignSpinner/MMMaterialDesignSpinner.framework",
 				"${BUILT_PRODUCTS_DIR}/PopOverMenu/PopOverMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/RAMAnimatedTabBarController/RAMAnimatedTabBarController.framework",
@@ -835,7 +862,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HTHorizontalSelectionList.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSSAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13BadgeView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMMaterialDesignSpinner.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopOverMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RAMAnimatedTabBarController.framework",
@@ -912,6 +941,7 @@
 				A3FDDB8F21AE676200524AF4 /* HomeViewController.swift in Sources */,
 				A3BEF4D62189DCC100192E7E /* EditProfileViewController.swift in Sources */,
 				A3FDDB9B21AE6ABA00524AF4 /* SingleTonClass.swift in Sources */,
+				A3FDDBB121B01DCD00524AF4 /* NotificationTableViewCell.swift in Sources */,
 				A3BEF46E2189C6A100192E7E /* NewOrdersViewController.swift in Sources */,
 				A3BEF4582189BD0100192E7E /* ForgotPasswordViewController.swift in Sources */,
 				A3BEF4622189C2E400192E7E /* DashboardCollectionViewCell.swift in Sources */,
@@ -931,6 +961,7 @@
 				A3BEF49F2189D49C00192E7E /* CategoriesViewController.swift in Sources */,
 				A3BEF4B52189D57800192E7E /* RecommendedTableViewCell.swift in Sources */,
 				A3BEF605218D838A00192E7E /* TableModel.swift in Sources */,
+				A3FDDBB321B020A700524AF4 /* NotofocationModel.swift in Sources */,
 				A3BEF4952189CACF00192E7E /* TableBookingHistoryViewController.swift in Sources */,
 				A3BEF4E32189DEC800192E7E /* TableViewCell.swift in Sources */,
 				A3BEF4BC2189D5CA00192E7E /* SelectGroupCell.swift in Sources */,
@@ -944,6 +975,7 @@
 				A3FDDB8B21AD4EF200524AF4 /* TabBarViewController.swift in Sources */,
 				A3FDDB9921AE67CE00524AF4 /* EarningsSeeAllACollectionViewCell.swift in Sources */,
 				A3BEF4A82189D51000192E7E /* EditCatagoryTableViewCell.swift in Sources */,
+				A3FDDBAC21B01CB000524AF4 /* NewsViewController.swift in Sources */,
 				A3BEF4BE2189D5CA00192E7E /* SelectGroup.swift in Sources */,
 				A3FDDB8D21AD755600524AF4 /* TableBookModel.swift in Sources */,
 				A3FDDB8921AD2FB400524AF4 /* AccountsViewController.swift in Sources */,

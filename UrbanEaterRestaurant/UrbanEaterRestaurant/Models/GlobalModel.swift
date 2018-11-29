@@ -18,6 +18,7 @@ class GlobalModel:NSObject {
     var earningModel: EarningModel!
     var bookTableModel: TableModel!
     var tableBookingModel: TableBookModel!
+    var newsModel: NotofocationModel!
     
     override init() {
         super.init()
