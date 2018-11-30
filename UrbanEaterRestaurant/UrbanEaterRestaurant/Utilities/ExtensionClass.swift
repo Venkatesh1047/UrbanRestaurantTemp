@@ -113,6 +113,9 @@ extension UIColor{
     static var redColor:UIColor{
         return #colorLiteral(red: 1, green: 0.3607843137, blue: 0.4117647059, alpha: 1)
     }
+    static var secondaryBGColor:UIColor{
+        return #colorLiteral(red: 0.2509803922, green: 0.2901960784, blue: 0.4078431373, alpha: 1) //404A68
+    }
 }
 
 extension UIFont{

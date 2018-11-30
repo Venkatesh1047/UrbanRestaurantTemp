@@ -22,7 +22,6 @@
 		A3BEF4522189B6C400192E7E /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4512189B6C400192E7E /* Utilities.swift */; };
 		A3BEF4552189B6F800192E7E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4542189B6F800192E7E /* Constants.swift */; };
 		A3BEF4582189BD0100192E7E /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4572189BD0100192E7E /* ForgotPasswordViewController.swift */; };
-		A3BEF45B2189BFF000192E7E /* DashboardNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF45A2189BFF000192E7E /* DashboardNewViewController.swift */; };
 		A3BEF45E2189C09A00192E7E /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF45D2189C09A00192E7E /* MenuTableViewCell.swift */; };
 		A3BEF4622189C2E400192E7E /* DashboardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4602189C2E400192E7E /* DashboardCollectionViewCell.swift */; };
 		A3BEF4632189C2E400192E7E /* DashboardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF4612189C2E400192E7E /* DashboardCollectionViewCell.xib */; };
@@ -30,7 +29,6 @@
 		A3BEF4692189C4A100192E7E /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF4652189C49D00192E7E /* Roboto-Medium.ttf */; };
 		A3BEF46A2189C4A100192E7E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A3BEF4662189C49D00192E7E /* Roboto-Regular.ttf */; };
 		A3BEF46E2189C6A100192E7E /* NewOrdersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF46D2189C6A100192E7E /* NewOrdersViewController.swift */; };
-		A3BEF4712189C6C100192E7E /* TableBookingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4702189C6C100192E7E /* TableBookingsViewController.swift */; };
 		A3BEF4762189C78B00192E7E /* TableCurrentBookingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4742189C78B00192E7E /* TableCurrentBookingCell.swift */; };
 		A3BEF47B2189C7B000192E7E /* TableBookingHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF4792189C7B000192E7E /* TableBookingHistoryCell.swift */; };
 		A3BEF47F2189C80400192E7E /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BEF47D2189C80400192E7E /* OrderHistoryTableViewCell.swift */; };
@@ -116,7 +114,6 @@
 		A3BEF4512189B6C400192E7E /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		A3BEF4542189B6F800192E7E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A3BEF4572189BD0100192E7E /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		A3BEF45A2189BFF000192E7E /* DashboardNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardNewViewController.swift; sourceTree = "<group>"; };
 		A3BEF45D2189C09A00192E7E /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		A3BEF4602189C2E400192E7E /* DashboardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A3BEF4612189C2E400192E7E /* DashboardCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -124,7 +121,6 @@
 		A3BEF4662189C49D00192E7E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		A3BEF4672189C49D00192E7E /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		A3BEF46D2189C6A100192E7E /* NewOrdersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOrdersViewController.swift; sourceTree = "<group>"; };
-		A3BEF4702189C6C100192E7E /* TableBookingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableBookingsViewController.swift; sourceTree = "<group>"; };
 		A3BEF4742189C78B00192E7E /* TableCurrentBookingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCurrentBookingCell.swift; sourceTree = "<group>"; };
 		A3BEF4792189C7B000192E7E /* TableBookingHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableBookingHistoryCell.swift; sourceTree = "<group>"; };
 		A3BEF47D2189C80400192E7E /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -268,12 +264,18 @@
 		A3BEF4412189A3E300192E7E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3BEF46C2189C68700192E7E /* OrdersViewController */,
+				A3BEF4592189BFC600192E7E /* HomeViewController */,
+				A3BEF4DD2189DD3D00192E7E /* Help&Support */,
+				A3BEF4D12189DBA100192E7E /* SettingsViewController */,
+				A3BEF4982189D41200192E7E /* MANAGE MENU ITEMS */,
+				A3BEF4932189CAB900192E7E /* TableBookingHistoryVC */,
+				A3BEF48B2189C9E400192E7E /* EarningSummeryViewController */,
+				A3BEF4882189C95E00192E7E /* OrderHistoryViewController */,
 				A3FDDBAA21B01C9E00524AF4 /* News */,
 				A3FDDB8A21AD4EF200524AF4 /* TabBarViewController.swift */,
 				A3FDDB8721AD2F8A00524AF4 /* Accounts */,
-				A3BEF4872189C94B00192E7E /* SIDE MENU */,
 				A3BEF4862189C93500192E7E /* LOGIN */,
-				A3BEF46B2189C63D00192E7E /* DASHBOARD */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -381,7 +383,6 @@
 			isa = PBXGroup;
 			children = (
 				A3FDDB8E21AE676200524AF4 /* HomeViewController.swift */,
-				A3BEF45A2189BFF000192E7E /* DashboardNewViewController.swift */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
@@ -413,30 +414,12 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		A3BEF46B2189C63D00192E7E /* DASHBOARD */ = {
-			isa = PBXGroup;
-			children = (
-				A3BEF46F2189C6AF00192E7E /* TableBookingViewController */,
-				A3BEF46C2189C68700192E7E /* NewOrdersViewController */,
-				A3BEF4592189BFC600192E7E /* HomeViewController */,
-			);
-			path = DASHBOARD;
-			sourceTree = "<group>";
-		};
-		A3BEF46C2189C68700192E7E /* NewOrdersViewController */ = {
+		A3BEF46C2189C68700192E7E /* OrdersViewController */ = {
 			isa = PBXGroup;
 			children = (
 				A3BEF46D2189C6A100192E7E /* NewOrdersViewController.swift */,
 			);
-			path = NewOrdersViewController;
-			sourceTree = "<group>";
-		};
-		A3BEF46F2189C6AF00192E7E /* TableBookingViewController */ = {
-			isa = PBXGroup;
-			children = (
-				A3BEF4702189C6C100192E7E /* TableBookingsViewController.swift */,
-			);
-			path = TableBookingViewController;
+			path = OrdersViewController;
 			sourceTree = "<group>";
 		};
 		A3BEF4722189C77F00192E7E /* TableCurrentBookingCell */ = {
@@ -485,19 +468,6 @@
 			path = LOGIN;
 			sourceTree = "<group>";
 		};
-		A3BEF4872189C94B00192E7E /* SIDE MENU */ = {
-			isa = PBXGroup;
-			children = (
-				A3BEF4DD2189DD3D00192E7E /* Help&Support */,
-				A3BEF4D12189DBA100192E7E /* SettingsViewController */,
-				A3BEF4982189D41200192E7E /* MANAGE MENU */,
-				A3BEF4932189CAB900192E7E /* TableBookingHistoryVC */,
-				A3BEF48B2189C9E400192E7E /* EarningSummeryViewController */,
-				A3BEF4882189C95E00192E7E /* OrderHistoryViewController */,
-			);
-			path = "SIDE MENU";
-			sourceTree = "<group>";
-		};
 		A3BEF4882189C95E00192E7E /* OrderHistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -531,7 +501,7 @@
 			path = TableBookingHistoryVC;
 			sourceTree = "<group>";
 		};
-		A3BEF4982189D41200192E7E /* MANAGE MENU */ = {
+		A3BEF4982189D41200192E7E /* MANAGE MENU ITEMS */ = {
 			isa = PBXGroup;
 			children = (
 				A3BEF49D2189D47F00192E7E /* RecommendedItemsVC */,
@@ -539,7 +509,7 @@
 				A3BEF49B2189D45B00192E7E /* CategoriesViewController */,
 				A3BEF4992189D43F00192E7E /* ManageMenuViewController.swift */,
 			);
-			path = "MANAGE MENU";
+			path = "MANAGE MENU ITEMS";
 			sourceTree = "<group>";
 		};
 		A3BEF49B2189D45B00192E7E /* CategoriesViewController */ = {
@@ -936,7 +906,6 @@
 				A3BEF4842189C82900192E7E /* NewOrderTableViewCell.swift in Sources */,
 				A3BEF48D2189CA0F00192E7E /* EarningSummuryViewController.swift in Sources */,
 				A3BEF4CC2189D90100192E7E /* MJPopupBackgroundView.m in Sources */,
-				A3BEF4712189C6C100192E7E /* TableBookingsViewController.swift in Sources */,
 				A3BEF4DC2189DD0400192E7E /* BusinessHoursViewController.swift in Sources */,
 				A3FDDB8F21AE676200524AF4 /* HomeViewController.swift in Sources */,
 				A3BEF4D62189DCC100192E7E /* EditProfileViewController.swift in Sources */,
@@ -946,7 +915,6 @@
 				A3BEF4582189BD0100192E7E /* ForgotPasswordViewController.swift in Sources */,
 				A3BEF4622189C2E400192E7E /* DashboardCollectionViewCell.swift in Sources */,
 				A3BEF4D92189DCED00192E7E /* ChangePasswordViewController.swift in Sources */,
-				A3BEF45B2189BFF000192E7E /* DashboardNewViewController.swift in Sources */,
 				A36DB273219AEBAB00DF6ED6 /* ItemsCollectionViewCell.swift in Sources */,
 				A3BEF4912189CA7500192E7E /* EarningsTableViewCell.swift in Sources */,
 				A3BEF4522189B6C400192E7E /* Utilities.swift in Sources */,

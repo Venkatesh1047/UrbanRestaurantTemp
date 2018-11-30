@@ -15,7 +15,7 @@ class TableBookingHistoryCell: UITableViewCell {
     @IBOutlet weak var noofPersonLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
-    @IBOutlet weak var mobileNoLbl: UILabel!
+    @IBOutlet weak var OrderID: UILabel!
     
     @IBOutlet weak var callBtn: UIButton!
     

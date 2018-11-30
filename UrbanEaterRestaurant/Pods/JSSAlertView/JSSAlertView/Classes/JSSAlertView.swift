@@ -313,9 +313,9 @@ open class JSSAlertView: UIViewController {
             
             if title.range(of:"Offline") != nil {
                 print("exists")
-                dismissButton.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
+                dismissButton.backgroundColor = #colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1)
             }else{
-                dismissButton.backgroundColor = #colorLiteral(red: 0.8723144531, green: 0.8723144531, blue: 0.8723144531, alpha: 1)
+                dismissButton.backgroundColor = #colorLiteral(red: 0.2509803922, green: 0.2901960784, blue: 0.4078431373, alpha: 1)
             }
             
             
@@ -343,9 +343,9 @@ open class JSSAlertView: UIViewController {
                 //cancelButton.setBackgroundImage(buttonHighlightColor, for: .highlighted)
                 if title.range(of:"Offline") != nil {
                     print("exists")
-                    cancelButton.backgroundColor = #colorLiteral(red: 0.8723144531, green: 0.8723144531, blue: 0.8723144531, alpha: 1)
+                    cancelButton.backgroundColor = #colorLiteral(red: 0.2509803922, green: 0.2901960784, blue: 0.4078431373, alpha: 1)
                 }else{
-                    cancelButton.backgroundColor = #colorLiteral(red: 0.9529411765, green: 0.7529411765, blue: 0.1843137255, alpha: 1)
+                    cancelButton.backgroundColor = #colorLiteral(red: 0, green: 0.7314415574, blue: 0.3181976676, alpha: 1)
                 }
                 //UIColor(red: 260.0/255.0, green: 17.0/255.0, blue: 38.0/255.0, alpha: 1)
                 cancelButton.addTarget(self, action: #selector(JSSAlertView.cancelButtonTap), for: .touchUpInside)

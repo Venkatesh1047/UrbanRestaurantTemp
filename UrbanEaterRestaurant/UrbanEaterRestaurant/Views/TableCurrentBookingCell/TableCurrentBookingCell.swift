@@ -19,18 +19,13 @@ class TableCurrentBookingCell: UITableViewCell {
     @IBOutlet weak var noofPersonLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var emailLbl: UILabel!
-    @IBOutlet weak var mobileNoLbl: UILabel!
+    @IBOutlet weak var orderID: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        callBtn.layer.cornerRadius = 3.0
-        rejectBtn.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        rejectBtn.layer.borderWidth = 1
-        rejectBtn.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        rejectBtn.layer.cornerRadius = 5.0
-        rejectBtn.setTitleColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .normal)
-        confirmBtn.layer.cornerRadius = 5.0
+        rejectBtn.layer.cornerRadius = 8.0
+        confirmBtn.layer.cornerRadius = 8.0
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

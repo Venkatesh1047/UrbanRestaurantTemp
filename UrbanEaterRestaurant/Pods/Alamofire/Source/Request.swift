@@ -23,7 +23,7 @@
 //
 
 import Foundation
-let timeOutInterval = 10.0
+
 /// A type that can inspect and optionally adapt a `URLRequest` in some manner if necessary.
 public protocol RequestAdapter {
     /// Inspects and adapts the specified `URLRequest` in some manner if necessary and returns the result.
@@ -102,7 +102,7 @@ open class Request {
     open var task: URLSessionTask? { return delegate.task }
 
     /// The session belonging to the underlying task.
-    open let session: URLSession
+    public let session: URLSession
 
     /// The request sent or to be sent to the server.
     open var request: URLRequest? { return task?.originalRequest }
@@ -184,7 +184,7 @@ open class Request {
     /// - parameter password: The password.
     ///
     /// - returns: A tuple with Authorization header and credential value if encoding succeeds, `nil` otherwise.
-    open static func authorizationHeader(user: String, password: String) -> (key: String, value: String)? {
+    open class func authorizationHeader(user: String, password: String) -> (key: String, value: String)? {
         guard let data = "\(user):\(password)".data(using: .utf8) else { return nil }
 
         let credential = data.base64EncodedString(options: [])
@@ -320,21 +320,16 @@ extension Request: CustomDebugStringConvertible {
 
         var headers: [AnyHashable: Any] = [:]
 
-        if let additionalHeaders = session.configuration.httpAdditionalHeaders {
-            for (field, value) in additionalHeaders where field != AnyHashable("Cookie") {
-                headers[field] = value
-            }
-        }
+        session.configuration.httpAdditionalHeaders?.filter {  $0.0 != AnyHashable("Cookie") }
+                                                    .forEach { headers[$0.0] = $0.1 }
 
-        if let headerFields = request.allHTTPHeaderFields {
-            for (field, value) in headerFields where field != "Cookie" {
-                headers[field] = value
-            }
-        }
+        request.allHTTPHeaderFields?.filter { $0.0 != "Cookie" }
+                                    .forEach { headers[$0.0] = $0.1 }
 
-        for (field, value) in headers {
-            let escapedValue = String(describing: value).replacingOccurrences(of: "\"", with: "\\\"")
-            components.append("-H \"\(field): \(escapedValue)\"")
+        components += headers.map {
+            let escapedValue = String(describing: $0.value).replacingOccurrences(of: "\"", with: "\\\"")
+
+            return "-H \"\($0.key): \(escapedValue)\""
         }
 
         if let httpBodyData = request.httpBody, let httpBody = String(data: httpBodyData, encoding: .utf8) {
@@ -362,8 +357,7 @@ open class DataRequest: Request {
 
         func task(session: URLSession, adapter: RequestAdapter?, queue: DispatchQueue) throws -> URLSessionTask {
             do {
-                var urlRequest = try self.urlRequest.adapt(using: adapter)
-                urlRequest.timeoutInterval = timeOutInterval
+                let urlRequest = try self.urlRequest.adapt(using: adapter)
                 return queue.sync { session.dataTask(with: urlRequest) }
             } catch {
                 throw AdaptError(error: error)
